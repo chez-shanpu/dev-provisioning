@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  connection: local
+  strategy: linear
+  roles:
+    - name: font
+      tags: font

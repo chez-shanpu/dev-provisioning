@@ -7,9 +7,9 @@
         autoremove: yes
 
     - name: Install "powerline font"
-        apt:
-          name: fonts-powerline
-          autoclean: yes
-          autoremove: yes
+      apt:
+        name: fonts-powerline
+        autoclean: yes
+        autoremove: yes
 
   tags: font_install

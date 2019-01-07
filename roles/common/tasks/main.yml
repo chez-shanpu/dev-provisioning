@@ -25,4 +25,6 @@
   tags: apt_install
 
 - name: Display date in Gnome shell
-  command: gsettings set org.gnome.desktop.interface clock-show-date true
+  dconf:
+    key: "/org/gnome/desktop/interface/clock-show-date"
+    value: "false"

@@ -9,18 +9,18 @@
         upgrade: safe
 
     - name: Install packages
-        apt:
-          name: '{{ item }}'
-        with_items:
-          - '{{ apt_packages }}'
+      apt:
+        name: '{{ item }}'
+      with_items:
+        - '{{ apt_packages }}'
 
     - name: Apt clean
-        apt:
-          autoclean: yes
+      apt:
+        autoclean: yes
 
     - name: Remove unnecessary packages
-        apt:
-          autoremove: yes
+      apt:
+        autoremove: yes
 
   tags: apt_install
 

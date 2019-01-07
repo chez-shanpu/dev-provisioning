@@ -6,3 +6,6 @@
   roles:
     - name: font
       tags: font
+
+    - name: common
+      tags: common

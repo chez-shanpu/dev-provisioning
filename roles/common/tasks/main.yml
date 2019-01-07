@@ -24,7 +24,12 @@
 
   tags: apt_install
 
-- name: Display date in Gnome shell
-  dconf:
-    key: "/org/gnome/desktop/interface/clock-show-date"
-    value: "false"
+- block:
+    - name: Install pip "psutil" for dconf
+      pip:
+        name: psutil
+        
+    - name: Display date in Gnome shell
+      dconf:
+        key: "/org/gnome/desktop/interface/clock-show-date"
+        value: "false"

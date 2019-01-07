@@ -1,0 +1,37 @@
+---
+- block:
+    - name: Apt update
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages to the latest version
+      apt:
+        upgrade: safe
+
+    - name: Install packages
+      apt:
+        name: '{{ apt_packages }}'
+
+    - name: Apt clean
+      apt:
+        autoclean: yes
+
+    - name: Remove unnecessary packages
+      apt:
+        autoremove: yes
+
+  tags: apt_install
+
+# docker上で実行するとだめ？ TODO 要検証
+#- block:
+#    - name: Install pip "psutil" for dconf
+#      pip:
+#        name: psutil
+#
+#    - name: Display date in Gnome shell
+#      dconf:
+#        key: "/org/gnome/desktop/interface/clock-show-date"
+#        value: "true"
+#        state: present
+#
+#  tags: edit_gnome_shell

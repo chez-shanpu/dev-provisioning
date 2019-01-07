@@ -2,6 +2,10 @@
 - hosts: local
   connection: local
   strategy: linear
+  become: yes
   roles:
     - name: font
       tags: font
+
+    - name: common
+      tags: common

@@ -1,0 +1,25 @@
+apt_packages:
+  - git
+  - wget
+  - curl
+  - fcitx
+  - fcitx-mozc
+  - python
+  - python3
+  - python-pip
+  - python3-pip
+  - libgnome-keyring0
+  - make
+  - build-essential
+  - libssl-dev
+  - zlib1g-dev
+  - libbz2-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - llvm
+  - libncurses5-dev
+  - libncursesw5-dev
+  - xz-utils
+  - tk-dev
+  - libffi-dev
+  - liblzma-dev

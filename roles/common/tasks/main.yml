@@ -32,4 +32,5 @@
     - name: Display date in Gnome shell
       dconf:
         key: "/org/gnome/desktop/interface/clock-show-date"
-        value: "false"
+        value: "true"
+        state: present

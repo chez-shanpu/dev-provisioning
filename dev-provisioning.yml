@@ -2,7 +2,7 @@
 - hosts: local
   connection: local
   strategy: linear
-  becoeme: yes
+  become: yes
   roles:
     - name: font
       tags: font

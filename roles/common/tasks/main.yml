@@ -10,9 +10,7 @@
 
     - name: Install packages
       apt:
-        name: '{{ item }}'
-      with_items:
-        - '{{ apt_packages }}'
+        name: '[{{ apt_packages }}]'
 
     - name: Apt clean
       apt:
@@ -24,13 +22,16 @@
 
   tags: apt_install
 
-- block:
-    - name: Install pip "psutil" for dconf
-      pip:
-        name: psutil
-
-    - name: Display date in Gnome shell
-      dconf:
-        key: "/org/gnome/desktop/interface/clock-show-date"
-        value: "true"
-        state: present
+# docker上で実行するとだめ？ TODO 要検証
+#- block:
+#    - name: Install pip "psutil" for dconf
+#      pip:
+#        name: psutil
+#
+#    - name: Display date in Gnome shell
+#      dconf:
+#        key: "/org/gnome/desktop/interface/clock-show-date"
+#        value: "true"
+#        state: present
+#
+#  tags: edit_gnome_shell

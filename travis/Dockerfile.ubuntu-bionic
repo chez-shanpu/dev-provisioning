@@ -9,13 +9,13 @@ RUN apt-add-repository -y ppa:ansible/ansible && apt-get update && apt-get insta
 RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
 # add sudo user
-RUN groupadd ansible && \
-    useradd  -g ansible -G sudo -m -s /bin/bash ansible && \
-    echo 'ansible:ansible' | chpasswd
-
-RUN echo 'Defaults visiblepw'             >> /etc/sudoers
-RUN echo 'ansible ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
-USER ansible
+#RUN groupadd ansible && \
+#    useradd  -g ansible -G sudo -m -s /bin/bash ansible && \
+#    echo 'ansible:ansible' | chpasswd
+#
+#RUN echo 'Defaults visiblepw'             >> /etc/sudoers
+#RUN echo 'ansible ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+#
+#USER ansible
 
 ENTRYPOINT ["/bin/systemd"]

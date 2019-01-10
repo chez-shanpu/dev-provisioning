@@ -1,14 +1,6 @@
 FROM ubuntu:bionic
 
-# add sudo user
-RUN groupadd ansible && \
-    useradd  -g ansible -G sudo -m -s /bin/bash ansible && \
-    echo 'ansible:ansible' | chpasswd
-
-RUN echo 'Defaults visiblepw'             >> /etc/sudoers
-RUN echo 'ansible ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
-USER ansible
+USER root
 
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y software-properties-common systemd && rm -rf /var/lib/apt/lists/*
 

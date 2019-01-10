@@ -6,7 +6,7 @@
         autoclean: yes
         autoremove: yes
 
-    tags: fish_install
+  tags: fish_install
 
 - block:
     - name: Obtain path to fish
@@ -20,7 +20,7 @@
         shell: '{{ fish_path.stdout }}'
         system: yes
 
-    tags: fish_chsh
+  tags: fish_chsh
 
 - block:
     - name: Create fish config dir

@@ -3,7 +3,7 @@ FROM ubuntu:bionic
 # add sudo user
 RUN groupadd ansible && \
     useradd  -g ansible -G sudo -m -s /bin/bash ansible && \
-    echo 'iganari:ansible' | chpasswd
+    echo 'ansible:ansible' | chpasswd
 
 RUN echo 'Defaults visiblepw'             >> /etc/sudoers
 RUN echo 'ansible ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers

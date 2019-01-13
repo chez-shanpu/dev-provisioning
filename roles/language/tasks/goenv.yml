@@ -6,12 +6,13 @@
 
     - name: reload fish
       shell: exec fish
+      changed_when: false
 
   tags: goenv_install
 
 - block:
     - name: Install go
-      shell: goenv install '{{ item }}'
+      shell: goenv install {{ item }}
       args:
         creates: '~/.anyenv/envs/goenv/versions/{{ item }}'
       with_items:
@@ -19,6 +20,6 @@
       # TODO rehashつける？
 
     - name: Set global go version
-      shell: goenv global '{{ global_go_version }}'
+      shell: goenv global {{ global_go_version }}
 
   tags: go_install

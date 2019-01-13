@@ -6,12 +6,13 @@
 
     - name: reload fish
       shell: exec fish
+      changed_when: false
 
   tags: pyenv_install
 
 - block:
     - name: Install python
-      shell: pyenv install '{{ item }}'
+      shell: pyenv install {{ item }}
       args:
         creates: '~/.anyenv/envs/pyenv/versions/{{ item }}'
       with_items:
@@ -19,6 +20,6 @@
       # TODO rehashつける？
 
     - name: Set global python version
-      shell: pyenv global '{{ global_python_version.python }}' '{{ global_python_version.python3 }}'
+      shell: pyenv global {{ global_python_version.python }} {{ global_python_version.python3 }}
 
   tags: python_install

@@ -12,3 +12,6 @@
 
     - name: fish
       tags: fish
+
+    - name: dotfiles
+      tag: dotfiles

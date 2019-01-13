@@ -1,6 +1,0 @@
----
-go_version:
-  - 1.11.2
-
-global_go_version:
-  - 1.11.2

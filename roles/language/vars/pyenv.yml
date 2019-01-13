@@ -1,7 +1,0 @@
----
-python_version:
-  - 2.7.15
-  - 3.7.1
-
-global_python_version:
-  - { python: 2.7.15, python3: 3.7.1 }

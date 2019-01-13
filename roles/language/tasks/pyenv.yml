@@ -8,9 +8,11 @@
 
 - block:
     - name: Install python
-      shell: pyenv install '{{ python_version }}'
+      shell: pyenv install '{{ item }}'
       args:
-        creates: '~/.anyenv/envs/pyenv/versions/{{ python_version }}'
+        creates: '~/.anyenv/envs/pyenv/versions/{{ item }}'
+      with_items:
+        - '{{ python_versions }}'
       # TODO rehashつける？
 
     - name: Set global python version

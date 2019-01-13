@@ -24,13 +24,13 @@ c_apt_packages:
 tex_apt_packages:
   - texlive-full
 
-go_version:
+go_versions:
   - 1.11.2
 
 global_go_version:
   - 1.11.2
 
-python_version:
+python_versions:
   - 2.7.15
   - 3.7.1
 

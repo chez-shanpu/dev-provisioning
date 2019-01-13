@@ -8,12 +8,14 @@
 
 - block:
     - name: Install go
-      shell: goenv install '{{ go_version }}'
+      shell: goenv install '{{ item }}'
       args:
-        creates: '~/.anyenv/envs/goenv/versions/{{ go_version }}'
+        creates: '~/.anyenv/envs/goenv/versions/{{ item }}'
+      with_items:
+        - '{{ go_versions }}'
       # TODO rehashつける？
 
     - name: Set global go version
-      shell: goenv global '{{ global_go_version }}
+      shell: goenv global '{{ global_go_version }}'
 
   tags: go_install

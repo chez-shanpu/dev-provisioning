@@ -1,0 +1,19 @@
+- block:
+    - name: Install goenv
+      shell: anyenv install goenv
+      args:
+        creates: ~/.anyenv/envs/goenv/bin/goenv
+
+  tags: goenv_install
+
+- block:
+    - name: Install go
+      shell: goenv install '{{ go_version }}'
+      args:
+        creates: '~/.anyenv/envs/goenv/versions/{{ go_version }}'
+      # TODO rehashつける？
+
+    - name: Set global go version
+      shell: goenv global '{{ global_go_version }}
+
+  tags: go_install

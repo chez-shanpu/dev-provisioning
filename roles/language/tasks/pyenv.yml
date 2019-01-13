@@ -1,0 +1,19 @@
+- block:
+    - name: Install pyenv
+      shell: anyenv install pyenv
+      args:
+        creates: ~/.anyenv/envs/pyenv/bin/pyenv
+
+  tags: pyenv_install
+
+- block:
+    - name: Install python
+      shell: pyenv install '{{ python_version }}'
+      args:
+        creates: '~/.anyenv/envs/pyenv/versions/{{ python_version }}'
+      # TODO rehashつける？
+
+    - name: Set global python version
+      shell: pyenv global '{{ global_python_version.python }}' '{{ global_python_version.python3 }}'
+
+  tags: python_install

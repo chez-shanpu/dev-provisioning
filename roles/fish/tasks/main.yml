@@ -67,4 +67,8 @@
       shell: fisher
       changed_when: false
 
+    - name: reflect config.fish
+      shell: source ~/.config/fish/config.fish
+      changed_when: false
+
   tags: fish_config

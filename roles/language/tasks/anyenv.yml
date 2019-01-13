@@ -31,10 +31,3 @@
         dest: ~/.anyenv/plugins/anyenv-update
 
   tags: anyenv_plugin_install
-
-- block:
-#    config.fish内にanyenvのコマンドが含まれているためにこのタイミングで実行する必要がある．
-  - name: reflect config.fish
-    shell: source ~/.config/fish/config.fish
-
-  tags: fish_config_reflect

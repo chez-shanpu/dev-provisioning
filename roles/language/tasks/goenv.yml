@@ -1,3 +1,4 @@
+---
 - block:
     - name: Install goenv
       shell: anyenv install goenv

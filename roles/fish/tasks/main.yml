@@ -62,6 +62,7 @@
         force: yes
       with_items:
         - '{{ fish_config_file }}'
+      changed_when: false
 
     - name: Install fish plugins
       shell: fisher

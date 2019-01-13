@@ -4,8 +4,8 @@
       args:
         creates: ~/.anyenv/envs/goenv/bin/goenv
 
-    - name: reflect config.fish
-        shell: source ~/.config/fish/config.fish
+    - name: reload fish
+      shell: source ~/.config/fish/config.fish
 
   tags: goenv_install
 

@@ -4,6 +4,9 @@
       args:
         creates: ~/.anyenv/envs/pyenv/bin/pyenv
 
+    - name: reload fish
+      shell: source ~/.config/fish/config.fish
+
   tags: pyenv_install
 
 - block:

@@ -5,7 +5,7 @@
         creates: ~/.anyenv/envs/goenv/bin/goenv
 
     - name: reload fish
-      shell: source ~/.config/fish/config.fish
+      shell: exec fish
 
   tags: goenv_install
 

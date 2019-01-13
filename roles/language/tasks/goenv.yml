@@ -1,0 +1,27 @@
+---
+- block:
+    - name: Install goenv
+      shell: anyenv install goenv
+      args:
+        creates: ~/.anyenv/envs/goenv/bin/goenv
+
+    - name: reload fish
+      shell: exec fish
+      changed_when: false
+
+  tags: goenv_install
+
+# TODO issue立てた
+#- block:
+#    - name: Install go
+#      shell: goenv install {{ item }}
+#      args:
+#        creates: '~/.anyenv/envs/goenv/versions/{{ item }}'
+#      with_items:
+#        - '{{ go_versions }}'
+#      # TODO rehashつける？
+#
+#    - name: Set global go version
+#      shell: goenv global {{ global_go_version }}
+#
+#  tags: go_install

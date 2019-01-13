@@ -1,0 +1,19 @@
+---
+- block:
+    - name: Apt update
+      apt:
+        update_cache: yes
+
+    - name: Install packages
+      apt:
+        name: '{{ c_apt_packages }}'
+
+    - name: Apt clean
+      apt:
+        autoclean: yes
+
+    - name: Remove unnecessary packages
+      apt:
+        autoremove: yes
+
+  tags: c_install

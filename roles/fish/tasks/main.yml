@@ -54,17 +54,22 @@
       retries: 3
       delay: 5
 
-#    - name: Put config files
-#      file:
-#        src: '{{ dotfiles_repo }}/{{ item }}'
-#        dest: ~/{{ item }}
-#        state: link
-#        force: yes
-#      with_items:
-#        - '{{ fish_config_files }}'
-#
-#    - name: Install fish plugins
-#      shell: fisher
-#      changed_when: false
+    - name: Put config files
+      file:
+        src: '{{ dotfiles_path }}/{{ item.path }}'
+        dest: ~/{{ item.path }}
+        state: link
+        force: yes
+      with_items:
+        - '{{ fish_config_file }}'
+      changed_when: false
+
+    - name: Install fish plugins
+      shell: fisher
+      changed_when: false
+
+    - name: reflect config.fish
+      shell: source ~/.config/fish/config.fish
+      changed_when: false
 
   tags: fish_config

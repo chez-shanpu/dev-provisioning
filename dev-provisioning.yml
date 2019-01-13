@@ -10,8 +10,11 @@
     - name: common
       tags: common
 
+    - name: dotfiles
+      tag: dotfiles
+
     - name: fish
       tags: fish
 
-    - name: dotfiles
-      tag: dotfiles
+    - name: language
+      tag: language

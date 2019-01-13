@@ -1,0 +1,33 @@
+---
+- block:
+    - name: Apt update
+      apt:
+        update_cache: yes
+
+    - name: Install packages
+      apt:
+        name: '{{ env_apt_packages }}'
+
+    - name: Apt clean
+      apt:
+        autoclean: yes
+
+    - name: Remove unnecessary packages
+      apt:
+        autoremove: yes
+
+  tags: env_preparation
+
+- name: install "anyenv"
+  git:
+    repo: https://github.com/riywo/anyenv
+    dest: ~/.anyenv
+  tags: anyenv_isntall
+
+- block:
+    - name: install "anyenv-update"
+      git:
+        repo: https://github.com/znz/anyenv-update.git
+        dest: ~/.anyenv/plugins/anyenv-update
+
+  tags: anyenv_plugin_install

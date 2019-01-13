@@ -67,7 +67,4 @@
       shell: fisher
       changed_when: false
 
-    - name: reflect config.fish
-      shell: source '{{ fish_path.stdout }}'
-
   tags: fish_config

@@ -31,3 +31,16 @@
         dest: ~/.anyenv/plugins/anyenv-update
 
   tags: anyenv_plugin_install
+
+- block:
+#    config.fish内にanyenvのコマンドが含まれているためにこのタイミングで実行する必要がある．
+  - name: Obtain path to fish
+    shell: which fish
+    register: fish_path
+    changed_when: false
+    check_mode: no
+
+  - name: reflect config.fish
+    shell: source '{{ fish_path.stdout }}'
+
+  tags: fish_config_reflect

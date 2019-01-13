@@ -1,0 +1,38 @@
+---
+env_apt_packages:
+  - make
+  - build-essential
+  - libssl-dev
+  - zlib1g-dev
+  - libbz2-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - wget
+  - curl
+  - llvm
+  - libncurses5-dev
+  - libncursesw5-dev
+  - xz-utils
+  - tk-dev
+  - libffi-dev
+  - liblzma-dev
+
+c_apt_packages:
+  - gcc
+  - cmake
+
+tex_apt_packages:
+  - texlive-full
+
+go_version:
+  - 1.11.2
+
+global_go_version:
+  - 1.11.2
+
+python_version:
+  - 2.7.15
+  - 3.7.1
+
+global_python_version:
+  - { python: 2.7.15, python3: 3.7.1 }

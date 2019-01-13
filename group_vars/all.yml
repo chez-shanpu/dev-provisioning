@@ -1,0 +1,4 @@
+github_user: chez-shanpu
+ghq_root: '{{ lookup("env","HOME") }}/ghq'
+repos_root: '{{ ghq_root }}/github.com/{{ github_user }}'
+dotfiles_path: '{{ repos_root }}/dotfiles'

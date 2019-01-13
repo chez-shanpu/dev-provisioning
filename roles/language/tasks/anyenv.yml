@@ -1,4 +1,7 @@
 ---
+vars_files:
+  - ../vars/anyenv.yml
+
 - block:
     - name: Apt update
       apt:

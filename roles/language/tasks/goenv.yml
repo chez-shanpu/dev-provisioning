@@ -11,16 +11,17 @@
 
   tags: goenv_install
 
-- block:
-    - name: Install go
-      shell: goenv install {{ item }}
-      args:
-        creates: '~/.anyenv/envs/goenv/versions/{{ item }}'
-      with_items:
-        - '{{ go_versions }}'
-      # TODO rehashつける？
-
-    - name: Set global go version
-      shell: goenv global {{ global_go_version }}
-
-  tags: go_install
+# TODO issue立てた
+#- block:
+#    - name: Install go
+#      shell: goenv install {{ item }}
+#      args:
+#        creates: '~/.anyenv/envs/goenv/versions/{{ item }}'
+#      with_items:
+#        - '{{ go_versions }}'
+#      # TODO rehashつける？
+#
+#    - name: Set global go version
+#      shell: goenv global {{ global_go_version }}
+#
+#  tags: go_install

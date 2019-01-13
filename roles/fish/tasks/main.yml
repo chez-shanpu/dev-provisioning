@@ -56,12 +56,10 @@
 
     - name: Put config files
       file:
-        src: '{{ dotfiles_path }}/{{ item.path }}'
-        dest: ~/{{ fish_config_file }}
+        src: '{{ dotfiles_path }}/{{ fish_config_file.path }}'
+        dest: ~/{{ fish_config_file.path }}
         state: link
         force: yes
-      with_items:
-        - '{{ fish_config_file }}'
 
     - name: Install fish plugins
       shell: fisher

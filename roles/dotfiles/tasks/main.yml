@@ -1,6 +1,15 @@
 ---
-- block:
-    - name: git clone my dotfiles
-      git:
-        repo: https://github.com/chez-shanpu/dotfiles
-        dest: '{{ dotfiles_path }}'
+- name: git clone my dotfiles
+  git:
+    repo: https://github.com/chez-shanpu/dotfiles
+    dest: '{{ dotfiles_path }}'
+
+- name: Put ".gitconfig" to home
+  file:
+    src: '{{ dotfiles_path }}/.gitconfig'
+    dest: ~/.gitconfig
+    state: link
+    force: yes
+  changed_when: false
+
+

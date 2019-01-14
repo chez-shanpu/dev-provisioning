@@ -24,3 +24,6 @@
 
     - name: terminal
       tags: terminal
+
+    - name: gitkraken
+      tags: gitkraken

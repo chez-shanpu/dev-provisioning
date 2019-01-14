@@ -1,9 +1,10 @@
 ---
 - block:
-    - name: Get deb Hyper-term
-      file:
+    - file:
         path: ~/Downloads
         state: directory
+
+    - name: Get deb Hyper-term
       get_url:
         url: https://releases.hyper.is/download/deb
         dest: ~/Downloads/hyper-term.deb

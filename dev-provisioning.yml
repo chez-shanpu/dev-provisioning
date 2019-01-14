@@ -11,13 +11,16 @@
       tags: common
 
     - name: dotfiles
-      tag: dotfiles
+      tags: dotfiles
 
     - name: fish
       tags: fish
 
     - name: language
-      tag: language
+      tags: language
 
     - name: docker
-      tag: docker
+      tags: docker
+
+    - name: terminal
+      tags: terminal

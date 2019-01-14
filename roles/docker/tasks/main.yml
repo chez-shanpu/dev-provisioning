@@ -1,0 +1,52 @@
+---
+- name: Apt update
+  apt:
+    update_cache: yes
+
+- name: Install dependencies
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- name: Obtain ubuntu codename
+  shell: lsb_release -cs
+  register: ubuntu_codename
+  check_mode: no
+  failed_when: False
+  changed_when: False
+
+- name: Add GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Apt update
+  apt:
+    update_cache: yes
+
+- name: Add docker apt repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu_codename.stdout }} stable"
+    state: present
+    update_cache: yes
+
+- name: Install docker
+  apt:
+    name: docker-ce
+    state: present
+
+- name: Install docker-compose
+  apt:
+    name: docker-compose
+    state: present
+
+- name: Add user to docker group
+  user:
+    name: '{{ ansible_user }}'
+    append: yes
+    groups:
+      - docker

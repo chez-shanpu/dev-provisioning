@@ -1,6 +1,7 @@
 ---
 - block:
-    - file:
+    - name: Create Downloads dir if it doesn`t exist
+      file:
         path: ~/Downloads
         state: directory
 

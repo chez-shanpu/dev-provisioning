@@ -1,0 +1,15 @@
+---
+- name: Add typora apt key
+  shell: wget -qO - https://typora.io/linux/public-key.asc | apt-key add -
+  changed_when: false
+
+- name: Add typora apt repository
+  apt_repository:
+    repo: "deb https://typora.io/linux ./"
+    state: present
+    update_cache: yes
+
+- name: Install typora
+  apt:
+    name: typora
+    state: present

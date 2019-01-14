@@ -22,6 +22,9 @@
     - name: docker
       tags: docker
 
+    - name: editor
+      tags: editor
+
     - name: terminal
       tags: terminal
 

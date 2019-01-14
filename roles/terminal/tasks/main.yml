@@ -1,0 +1,33 @@
+---
+- block:
+    - name: Create Downloads dir if it doesn`t exist
+      file:
+        path: ~/Downloads
+        state: directory
+
+    - name: Get deb Hyper-term
+      get_url:
+        url: https://releases.hyper.is/download/deb
+        dest: ~/Downloads/hyper-term.deb
+      register: download_result
+      until: download_result is succeeded
+      retries: 3
+      delay: 5
+      changed_when: false
+
+    - name: Install Hyper-term
+      apt:
+        deb: ~/Downloads/hyper-term.deb
+
+  tags: hyperterm_install
+
+- block:
+    - name: Put ".hyper.js"
+      file:
+        src: '{{ dotfiles_path }}/.hyper.js'
+        dest: ~/.hyper.js
+        state: link
+        force: yes
+      changed_when: false
+
+  tags: hyperterm_config_set

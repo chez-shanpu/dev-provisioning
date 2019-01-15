@@ -8,20 +8,19 @@
 
   tags: fish_install
 
-# TODO 
-#- block:
-#    - name: Obtain path to fish
-#      shell: which fish
-#      register: fish_path
-#      changed_when: false
-#
-#    - name: Change default shell to "fish"
-#      user:
-#        name: '{{ lookup("env", "USER") }}'
-#        shell: '{{ fish_path.stdout }}'
-#        system: yes
-#
-#  tags: fish_chsh
+- block:
+    - name: Obtain path to fish
+      shell: which fish
+      register: fish_path
+      changed_when: false
+
+    - name: Change default shell to "fish"
+      user:
+        name: '{{ ansible_user }}'
+        shell: '{{ fish_path.stdout }}'
+        system: yes
+
+  tags: fish_chsh
 
 - block:
     - name: Create fish config dir

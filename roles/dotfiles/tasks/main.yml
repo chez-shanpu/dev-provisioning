@@ -3,6 +3,7 @@
   git:
     repo: https://github.com/chez-shanpu/dotfiles
     dest: '{{ dotfiles_path }}'
+    force: yes
 
 - name: Put ".gitconfig" to home
   file:

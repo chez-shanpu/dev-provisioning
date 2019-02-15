@@ -1,0 +1,5 @@
+---
+- include_tasks: kubectl.yml
+
+# kubensのインストールも含む
+- include_tasks: kubectx.yml

@@ -1,6 +1,7 @@
 ---
 - block:
     - name: Install "fish"
+      become: yes
       apt:
         name: fish
         autoclean: yes
@@ -15,6 +16,7 @@
       changed_when: false
 
     - name: Change default shell to "fish"
+      become: yes
       user:
         name: '{{ ansible_user }}'
         shell: '{{ fish_path.stdout }}'

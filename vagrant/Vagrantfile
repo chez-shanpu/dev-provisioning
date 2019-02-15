@@ -18,7 +18,6 @@ Vagrant.configure("2") do |config|
             host_vars[opts[:name]] = opts[:host_vars]
             if opts[:name] == boxes.last[:name]
                 config.vm.provision "ansible" do |ansible|
-                    # ansible.playbook = "test.yml"
                     ansible.playbook = "test-provisioning.yml"
                     ansible.limit = "all"
                     ansible.host_vars = host_vars

@@ -2,7 +2,6 @@
 - hosts: local
   connection: local
   strategy: linear
-  become: yes
   roles:
     - name: common
       tags: common

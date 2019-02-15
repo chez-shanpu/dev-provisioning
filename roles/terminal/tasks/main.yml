@@ -16,8 +16,9 @@
       changed_when: false
 
     - name: Install Hyper-term
+      become: yes
       apt:
-        deb: ~/Downloads/hyper-term.deb
+        deb: '/home/{{ ansible_user }}/Downloads/hyper-term.deb'
 
   tags: hyperterm_install
 

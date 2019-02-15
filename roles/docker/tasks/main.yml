@@ -1,9 +1,11 @@
 ---
 - name: Apt update
+  become: yes
   apt:
     update_cache: yes
 
 - name: Install dependencies
+  become: yes
   apt:
     name: "{{ item }}"
   with_items:
@@ -20,31 +22,37 @@
   changed_when: False
 
 - name: Add GPG key
+  become: yes
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
 
 - name: Apt update
+  become: yes
   apt:
     update_cache: yes
 
 - name: Add docker apt repository
+  become: yes
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu_codename.stdout }} stable"
     state: present
     update_cache: yes
 
 - name: Install docker
+  become: yes
   apt:
     name: docker-ce
     state: present
 
 - name: Install docker-compose
+  become: yes
   apt:
     name: docker-compose
     state: present
 
 - name: Add user to docker group
+  become: yes
   user:
     name: '{{ ansible_user }}'
     append: yes

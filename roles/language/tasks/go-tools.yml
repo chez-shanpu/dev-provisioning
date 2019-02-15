@@ -20,10 +20,13 @@
     - name: build peco
       make:
         chdir: ~/go/src/github.com/peco/peco
+      changed_when: false
 
     - name: copy peco-bin to go-bin-dir
       copy:
         src: ~/go/src/github.com/peco/peco/releases/peco_linux_amd64/peco
         dest: ~/go/bin
+        mode: 0775
+        force: yes
 
   tags: peco_install

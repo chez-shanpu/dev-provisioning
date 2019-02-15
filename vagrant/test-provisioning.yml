@@ -1,8 +1,11 @@
 ---
-- hosts: local
-  connection: local
-  strategy: linear
+- hosts: all
   become: yes
+  vars:
+    github_user: chez-shanpu
+    ghq_root: '{{ lookup("env","HOME") }}/ghq'
+    repos_root: '{{ ghq_root }}/github.com/{{ github_user }}'
+    dotfiles_path: '{{ repos_root }}/dotfiles'
   roles:
     - name: common
       tags: common
@@ -31,5 +34,5 @@
     - name: gitkraken
       tags: gitkraken
 
-    - name: tex
-      tags: tex
+#    - name: tex
+#      tags: tex

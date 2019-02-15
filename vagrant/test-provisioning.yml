@@ -34,5 +34,8 @@
     - name: gitkraken
       tags: gitkraken
 
+    - name: kubernetes
+      tags: kubernetes
+
 #    - name: tex
 #      tags: tex

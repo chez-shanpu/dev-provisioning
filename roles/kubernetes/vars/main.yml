@@ -1,0 +1,3 @@
+---
+kubectl_apt_packages:
+  - apt-transport-https

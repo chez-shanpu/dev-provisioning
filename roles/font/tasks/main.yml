@@ -1,12 +1,14 @@
 ---
 - block:
     - name: Install "ricty font"
+      become: yes
       apt:
         name: fonts-ricty-diminished
         autoclean: yes
         autoremove: yes
 
     - name: Install "powerline font"
+      become: yes
       apt:
         name: fonts-powerline
         autoclean: yes

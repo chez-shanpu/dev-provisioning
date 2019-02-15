@@ -1,18 +1,22 @@
 ---
 - block:
     - name: Apt update
+      become: yes
       apt:
         update_cache: yes
 
     - name: Install packages
+      become: yes
       apt:
         name: '{{ kubectl_apt_packages }}'
 
     - name: Apt clean
+      become: yes
       apt:
         autoclean: yes
 
     - name: Remove unnecessary packages
+      become: yes
       apt:
         autoremove: yes
 
@@ -20,10 +24,12 @@
 
 - block:
     - name: Add kubectl apt key
+      become: yes
       shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
       changed_when: false
 
     - name: Add kubernetes apt repository
+      become: yes
       apt_repository:
         repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
         state: present
@@ -31,10 +37,12 @@
         filename: kubernetes.list
 
     - name: Apt update
+      become: yes
       apt:
         update_cache: yes
 
     - name: Install kubectl
+      become: yes
       apt:
         name: kubectl
         state: present

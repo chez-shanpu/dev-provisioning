@@ -1,5 +1,16 @@
 ---
 - block:
+    - name: Add fish repository
+      apt_repository:
+        repo: ppa:fish-shell/release-3
+        update_cache: yes
+      become: yes
+
+    - name: Apt update
+      become: yes
+      apt:
+        update_cache: yes
+
     - name: Install "fish"
       become: yes
       apt:

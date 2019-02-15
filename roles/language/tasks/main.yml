@@ -6,5 +6,3 @@
 #- include_tasks: pyenv.yml
 
 - include_tasks: c.yml
-
-- include_tasks: tex.yml

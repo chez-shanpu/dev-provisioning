@@ -16,3 +16,16 @@ $ sudo apt-get install ansible
 ```sh
 $ ansible-playbook dev-provisioning.yml
 ```
+
+### Vagrantでの実行
+#### 確認済み動作環境
+Vagrant 2.2.3
+
+```bash
+$ cd ./vagrant/
+$ vagrant up --provisioning
+
+# 仮想マシンのリセット
+$ vagrant halt
+$ vagrant destroy
+```

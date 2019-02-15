@@ -12,4 +12,4 @@
 - name: Install gitkraken
   become: yes
   apt:
-    deb: '/home/{{ ansible_user }}/Downloads/gitkraken.deb'
+    deb: '{{ ansible_env.HOME }}/Downloads/gitkraken.deb'

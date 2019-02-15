@@ -27,12 +27,10 @@ tex_apt_packages:
 go_versions:
   - 1.11.2
 
-global_go_version:
-  - 1.11.2
+global_go_version: 1.11.2
 
 python_versions:
   - 2.7.15
   - 3.7.1
 
-global_python_version:
-  - { python: 2.7.15, python3: 3.7.1 }
+global_python_version: { python: 2.7.15, python3: 3.7.1 }

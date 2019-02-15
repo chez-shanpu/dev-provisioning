@@ -6,22 +6,22 @@
         creates: ~/.anyenv/envs/pyenv/bin/pyenv
 
     - name: reload fish
-      shell: exec fish
+      shell: source ~/.config/fish/config.fish
       changed_when: false
 
   tags: pyenv_install
 
-# TODO issue立てた
-#- block:
-#    - name: Install python
-#      shell: pyenv install {{ item }}
-#      args:
-#        creates: '~/.anyenv/envs/pyenv/versions/{{ item }}'
-#      with_items:
-#        - '{{ python_versions }}'
-#      # TODO rehashつける？
-#
-#    - name: Set global python version
-#      shell: pyenv global {{ global_python_version.python }} {{ global_python_version.python3 }}
-#
-#  tags: python_install
+- block:
+    - name: Install python
+      shell: pyenv install {{ item }}
+      args:
+        creates: '~/.anyenv/envs/pyenv/versions/{{ item }}'
+      with_items:
+        - '{{ python_versions }}'
+      # TODO rehashつける？
+
+    - name: Set global python version
+      shell: pyenv global {{ global_python_version.python }} {{ global_python_version.python3 }}
+      changed_when: false
+
+  tags: python_install

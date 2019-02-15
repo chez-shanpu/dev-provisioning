@@ -1,0 +1,29 @@
+---
+- name: install dep
+  shell: go get -u github.com/golang/dep/cmd/dep
+  changed_when: false
+  tags: dep_install
+
+- name: install ghq
+  shell: go get github.com/motemen/ghq
+  changed_when: false
+  tags: ghq_install
+
+- block:
+    - name: git clone peco
+      git:
+        repo: https://github.com/peco/peco
+        dest: ~/go/src/github.com/peco/peco
+        force: yes
+      changed_when: false
+
+    - name: build peco
+      make:
+        chdir: ~/go/src/github.com/peco/peco
+
+    - name: copy peco-bin to go-bin-dir
+      copy:
+        src: ~/go/src/github.com/peco/peco/releases/peco_linux_amd64/peco
+        dest: ~/go/bin
+
+  tags: peco_install

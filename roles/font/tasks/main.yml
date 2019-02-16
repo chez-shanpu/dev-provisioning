@@ -4,6 +4,7 @@
       become: yes
       apt:
         name: fonts-ricty-diminished
+        update_cache: yes
         autoclean: yes
         autoremove: yes
 
@@ -11,6 +12,7 @@
       become: yes
       apt:
         name: fonts-powerline
+        update_cache: yes
         autoclean: yes
         autoremove: yes
 

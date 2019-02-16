@@ -1,0 +1,10 @@
+---
+docker_dependences:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - software-properties-common
+
+docker_apt_packages:
+  - docker-ce
+  - docker-compose

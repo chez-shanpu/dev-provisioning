@@ -1,23 +1,8 @@
 ---
-- block:
-    - name: Apt update
-      become: yes
-      apt:
-        update_cache: yes
-
-    - name: Install packages
-      become: yes
-      apt:
-        name: '{{ c_apt_packages }}'
-
-    - name: Apt clean
-      become: yes
-      apt:
-        autoclean: yes
-
-    - name: Remove unnecessary packages
-      become: yes
-      apt:
-        autoremove: yes
-
-  tags: c_install
+- name: Install packages
+  become: yes
+  apt:
+    name: '{{ c_apt_packages }}'
+    update_cache: yes
+    autoclean: yes
+    autoremove: yes

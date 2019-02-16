@@ -1,26 +1,11 @@
 ---
-- block:
-    - name: Apt update
-      become: yes
-      apt:
-        update_cache: yes
-
-    - name: Install packages
-      become: yes
-      apt:
-        name: '{{ kubectl_apt_packages }}'
-
-    - name: Apt clean
-      become: yes
-      apt:
-        autoclean: yes
-
-    - name: Remove unnecessary packages
-      become: yes
-      apt:
-        autoremove: yes
-
-  tags: kubectl_prepare
+- name: Install kubectl dependences
+  become: yes
+  apt:
+    name: '{{ kubectl_dependences }}'
+    update_cache: yes
+    autoclean: yes
+    autoremove: yes
 
 - block:
     - name: Add kubectl apt key
@@ -36,15 +21,13 @@
         update_cache: yes
         filename: kubernetes.list
 
-    - name: Apt update
-      become: yes
-      apt:
-        update_cache: yes
-
     - name: Install kubectl
       become: yes
       apt:
         name: kubectl
         state: present
+        update_cache: yes
+        autoclean: yes
+        autoremove: yes
 
   tags: kubectl_install

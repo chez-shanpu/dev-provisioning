@@ -1,18 +1,9 @@
 ---
-- name: Apt update
-  become: yes
-  apt:
-    update_cache: yes
-
 - name: Install dependencies
   become: yes
   apt:
-    name: "{{ item }}"
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
+    name: '{{ docker_dependences }}'
+    update_cache: yes
 
 - name: Obtain ubuntu codename
   shell: lsb_release -cs
@@ -27,11 +18,6 @@
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
 
-- name: Apt update
-  become: yes
-  apt:
-    update_cache: yes
-
 - name: Add docker apt repository
   become: yes
   apt_repository:
@@ -42,14 +28,11 @@
 - name: Install docker
   become: yes
   apt:
-    name: docker-ce
+    name: '{{ docker_apt_packages }}'
     state: present
-
-- name: Install docker-compose
-  become: yes
-  apt:
-    name: docker-compose
-    state: present
+    update_cache: yes
+    autoclean: yes
+    autoremove: yes
 
 - name: Add user to docker group
   become: yes

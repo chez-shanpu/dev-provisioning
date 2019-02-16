@@ -15,15 +15,7 @@
       become: yes
       apt:
         name: '{{ apt_packages }}'
-
-    - name: Apt clean
-      become: yes
-      apt:
         autoclean: yes
-
-    - name: Remove unnecessary packages
-      become: yes
-      apt:
         autoremove: yes
 
   tags: apt_install

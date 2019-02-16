@@ -16,3 +16,6 @@
   apt:
     name: typora
     state: present
+    update_cache: yes
+    autoclean: yes
+    autoremove: yes

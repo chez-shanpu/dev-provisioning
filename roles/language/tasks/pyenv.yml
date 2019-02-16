@@ -20,7 +20,6 @@
       with_items:
         - '{{ python_versions }}'
       changed_when: false
-      # TODO rehashつける？
 
     - name: Set global python version
       shell: pyenv global {{ global_python_version.python }} {{ global_python_version.python3 }}

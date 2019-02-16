@@ -20,7 +20,6 @@
       with_items:
         - '{{ go_versions }}'
       changed_when: false
-      # TODO rehashつける？
 
     - name: Set global go version
       shell: goenv global {{ global_go_version }}

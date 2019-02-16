@@ -4,7 +4,7 @@
       become: yes
       apt:
         update_cache: yes
-      changed_when: false # テストを通すための一時的な措置
+#      changed_when: false # テストを通すための一時的な措置
 
     - name: Upgrade all packages to the latest version
       become: yes

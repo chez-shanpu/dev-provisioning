@@ -22,10 +22,22 @@
 
   tags: env_preparation
 
-- name: install "anyenv"
-  git:
-    repo: https://github.com/riywo/anyenv
-    dest: ~/.anyenv
+- block:
+    - name: install "anyenv"
+      git:
+        repo: https://github.com/riywo/anyenv
+        dest: ~/.anyenv
+
+    - name: init anyenv
+      shell: anyenv install --init
+      args:
+        stdin: "y"
+      ignore_errors: yes
+
+    - name: reload fish
+      shell: source ~/.config/fish/config.fish
+      changed_when: false
+
   tags: anyenv_isntall
 
 - block:

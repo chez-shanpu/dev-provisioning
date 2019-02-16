@@ -4,6 +4,7 @@
       shell: anyenv install goenv
       args:
         creates: ~/.anyenv/envs/goenv/bin/goenv
+      changed_when: false
 
     - name: reload fish
       shell: source ~/.config/fish/config.fish
@@ -18,6 +19,7 @@
         creates: '~/.anyenv/envs/goenv/versions/{{ item }}'
       with_items:
         - '{{ go_versions }}'
+      changed_when: false
       # TODO rehashつける？
 
     - name: Set global go version

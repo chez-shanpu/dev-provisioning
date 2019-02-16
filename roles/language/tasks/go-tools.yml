@@ -28,5 +28,6 @@
         dest: ~/go/bin
         mode: 0775
         force: yes
+      changed_when: false
 
   tags: peco_install

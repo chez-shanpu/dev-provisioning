@@ -17,7 +17,7 @@ $ ./ansible-setup.sh
 
 - 実行する
 ```sh
-$ ansible-playbook dev-provisioning.yml
+$ ansible-playbook dev-provisioning.yml --ask-become-pass
 ```
 
 ### Vagrantでの実行

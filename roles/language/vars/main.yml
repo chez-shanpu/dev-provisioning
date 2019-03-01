@@ -26,8 +26,9 @@ tex_apt_packages:
 
 go_versions:
   - 1.11.2
+  - 1.12.0
 
-global_go_version: 1.11.2
+global_go_version: 1.12.0
 
 python_versions:
   - 2.7.15

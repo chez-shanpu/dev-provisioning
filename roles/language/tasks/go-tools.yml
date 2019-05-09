@@ -13,19 +13,19 @@
     - name: git clone peco
       git:
         repo: https://github.com/peco/peco
-        dest: ~/go/src/github.com/peco/peco
+        dest: '~/go/{{ go_versions }}/src/github.com/peco/peco'
         force: yes
       changed_when: false
 
     - name: build peco
       make:
-        chdir: ~/go/src/github.com/peco/peco
+        chdir: '~/go/{{ go_versions }}/src/github.com/peco/peco'
       changed_when: false
 
     - name: copy peco-bin to go-bin-dir
       copy:
-        src: ~/go/src/github.com/peco/peco/releases/peco_linux_amd64/peco
-        dest: ~/go/bin
+        src: '~/go/{{ go_versions }}/src/github.com/peco/peco/releases/peco_linux_amd64/peco'
+        dest: '~/go/{{ go_versions }}/bin/peco'
         mode: 0775
         force: yes
       changed_when: false

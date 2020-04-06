@@ -1,7 +1,5 @@
 # dev-provisioning
 
-[![Build Status](https://travis-ci.org/chez-shanpu/dev-provisioning.svg?branch=master)](https://travis-ci.org/chez-shanpu/dev-provisioning)
-
 ## 環境
 Ubuntu 18.04.2 <br>
 ansible 2.7.8

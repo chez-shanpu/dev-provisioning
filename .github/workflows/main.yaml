@@ -12,7 +12,6 @@ jobs:
     env:
       ANSIBLE_FORCE_COLOR: 1
     steps:
-      -
       - name: Install Ansible
         run: |
           sudo apt-get update;

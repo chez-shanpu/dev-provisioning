@@ -1,6 +1,7 @@
 ---
 - block:
     - name: Add golang apt repository
+      become: yes
       apt_repository:
         repo: "ppa:longsleep/golang-backports"
         state: present

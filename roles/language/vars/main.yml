@@ -21,9 +21,6 @@ c_apt_packages:
   - gcc
   - cmake
 
-tex_apt_packages:
-  - texlive-full
-
 go_versions:
   - 1.12.0
   - 1.11.2

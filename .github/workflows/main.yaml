@@ -1,0 +1,31 @@
+name: ansible_test
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  provisioning_test:
+    runs-on: ubuntu-latest
+    env:
+      ANSIBLE_FORCE_COLOR: 1
+    steps:
+      - name: Install Ansible
+        run: |
+          sudo apt-get update;
+          sudo apt-get install software-properties-common;
+          sudo apt-add-repository --yes --update ppa:ansible/ansible;
+          sudo apt-get install ansible;
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Syntax Check
+        run: ansible-playbook -v ./dev-provisioning.yml --syntax-check
+      - name: Runnning Playbook
+        run: ansible-playbook -v ./dev-provisioning.yml
+      - name: Idempotence Test
+        run: |
+          ansible-playbook -v ./dev-provisioning.yml | grep -q 'changed=0.*failed=0' \
+          && (echo 'Idempotence test: pass' && exit 0) \
+          || (echo 'Idempotence test: fail' && exit 1)

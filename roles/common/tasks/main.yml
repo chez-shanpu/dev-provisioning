@@ -4,12 +4,13 @@
       become: yes
       apt:
         update_cache: yes
-#      changed_when: false # テストを通すための一時的な措置
+      changed_when: false
 
     - name: Upgrade all packages to the latest version
       become: yes
       apt:
         upgrade: safe
+      changed_when: false
 
     - name: Install packages
       become: yes
@@ -20,16 +21,15 @@
 
   tags: apt_install
 
-# docker上で実行するとだめ？ TODO 要検証
-#- block:
-#    - name: Install pip "psutil" for dconf
-#      pip:
-#        name: psutil
-#
-#    - name: Display date in Gnome shell
-#      dconf:
-#        key: "/org/gnome/desktop/interface/clock-show-date"
-#        value: "true"
-#        state: present
-#
-#  tags: edit_gnome_shell
+- block:
+    - name: Install pip "psutil" for dconf
+      pip:
+        name: psutil
+
+    - name: Display date in Gnome shell
+      dconf:
+        key: "/org/gnome/desktop/interface/clock-show-date"
+        value: "true"
+        state: present
+
+  tags: edit_gnome_shell

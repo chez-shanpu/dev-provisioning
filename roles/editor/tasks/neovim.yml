@@ -8,36 +8,19 @@
         autoclean: yes
         autoremove: yes
 
-    - name: Add apt repositories
-      apt_repository:
-        repo: ppa:neovim-ppa/stable
-        update_cache: yes
-      become: yes
-
     - name: Install neovim
       become: yes
       apt:
-        name: neovim
+        name: '{{ item }}'
         update_cache: yes
         autoclean: yes
         autoremove: yes
+      with_items:
+        - neovim
+        - python-neovim
+        - python3-neovim
 
   tags: neovim_install
-
-- block:
-    - name: Install pip "neovim"
-      pip:
-        name: neovim
-        extra_args: --upgrade
-        executable: pip2
-
-    - name: Install pip3 "neovim"
-      pip:
-        name: neovim
-        extra_args: --upgrade
-        executable: pip3
-
-  tags: neovim_pip_install
 
 - block:
     - name: Create nvim config dir

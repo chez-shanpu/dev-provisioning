@@ -12,17 +12,17 @@
 
   tags: pyenv_install
 
-- block:
-    - name: Install python
-      shell: pyenv install {{ item }}
-      args:
-        creates: '~/.anyenv/envs/pyenv/versions/{{ item }}'
-      with_items:
-        - '{{ python_versions }}'
-      changed_when: false
-
-    - name: Set global python version
-      shell: pyenv global {{ global_python_version.python }} {{ global_python_version.python3 }}
-      changed_when: false
-
-  tags: python_install
+#- block:
+#    - name: Install python
+#      shell: pyenv install {{ item }}
+#      args:
+#        creates: '~/.anyenv/envs/pyenv/versions/{{ item }}'
+#      with_items:
+#        - '{{ python_versions }}'
+#      changed_when: false
+#
+#    - name: Set global python version
+#      shell: pyenv global {{ global_python_version.python }} {{ global_python_version.python3 }}
+#      changed_when: false
+#
+#  tags: python_install

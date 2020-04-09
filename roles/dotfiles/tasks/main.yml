@@ -6,12 +6,8 @@
     force: yes
   changed_when: false
 
-- name: Put ".gitconfig" to home
-  file:
-    src: '{{ dotfiles_path }}/.gitconfig'
-    dest: ~/.gitconfig
-    state: link
-    force: yes
+- name: Run provision.sh
+  shell: ./provision.sh
+  args:
+    chdir: '{{ dotfiles_path }}'
   changed_when: false
-
-

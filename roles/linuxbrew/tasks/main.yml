@@ -1,0 +1,10 @@
+---
+- name: Install linuxbrew
+  shell: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
+  args:
+    executable: /bin/bash
+  changed_when: false
+
+- name: Install tools by brew
+  homebrew:
+    name: '{{ brew_tools }}'

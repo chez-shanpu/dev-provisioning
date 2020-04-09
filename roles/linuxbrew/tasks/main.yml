@@ -1,10 +1,8 @@
 ---
 - name: Install linuxbrew
   shell: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
-  changed_when: false
-
-- name: Add path for brew
-  shell: 'echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile'
+  args:
+    executable: /bin/bash
   changed_when: false
 
 - name: Install tools by brew

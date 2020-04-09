@@ -21,15 +21,15 @@
 
   tags: apt_install
 
-- block:
-    - name: Install pip "psutil" for dconf
-      pip:
-        name: psutil
-
-    - name: Display date in Gnome shell
-      dconf:
-        key: "/org/gnome/desktop/interface/clock-show-date"
-        value: "true"
-        state: present
-
-  tags: edit_gnome_shell
+#- block:
+#    - name: Install pip "psutil" for dconf
+#      pip:
+#        name: psutil
+#
+#    - name: Display date in Gnome shell
+#      dconf:
+#        key: "/org/gnome/desktop/interface/clock-show-date"
+#        value: "true"
+#        state: present
+#
+#  tags: edit_gnome_shell

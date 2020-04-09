@@ -1,0 +1,9 @@
+brew_tools:
+  - kubectx
+  - ghq
+  - peco
+  - tmux
+  - exa
+  - bat
+  - fd
+  - ripgrep

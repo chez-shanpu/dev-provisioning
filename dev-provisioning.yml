@@ -32,3 +32,6 @@
 
     - name: tex
       tags: tex
+
+    - name: linuxbrew
+      tags: linuxbrew

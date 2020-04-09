@@ -18,6 +18,7 @@
       args:
         stdin: "y"
       ignore_errors: yes
+      changed_when: false
 
     - name: reload fish
       shell: source ~/.config/fish/config.fish

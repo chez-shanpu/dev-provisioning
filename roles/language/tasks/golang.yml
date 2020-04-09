@@ -1,0 +1,17 @@
+---
+- block:
+    - name: Add golang apt repository
+      become: yes
+      apt_repository:
+        repo: "ppa:longsleep/golang-backports"
+        state: present
+        update_cache: yes
+
+    - name: Install packages
+      become: yes
+      apt:
+        name: golang-go
+        autoclean: yes
+        autoremove: yes
+
+  tags: install_go

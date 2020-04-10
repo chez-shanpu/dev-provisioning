@@ -7,3 +7,4 @@ brew_tools:
   - bat
   - fd
   - ripgrep
+  - rmtrash

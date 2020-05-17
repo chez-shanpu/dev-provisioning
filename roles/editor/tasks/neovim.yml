@@ -17,7 +17,6 @@
         autoremove: yes
       with_items:
         - neovim
-        - python-neovim
         - python3-neovim
 
   tags: neovim_install

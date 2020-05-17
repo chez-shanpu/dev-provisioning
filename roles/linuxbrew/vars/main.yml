@@ -1,4 +1,5 @@
 brew_tools:
+  - kubectl
   - kubectx
   - ghq
   - peco

@@ -1,5 +1,0 @@
----
-- include_tasks: kubectl.yml
-
-# linuxbrewでInstallするように変更
-#- include_tasks: kubectx.yml

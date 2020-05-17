@@ -4,9 +4,7 @@ apt_packages:
   - curl
   - fcitx
   - fcitx-mozc
-  - python
   - python3
-  - python-pip
   - python3-pip
   - libgnome-keyring0
   - make

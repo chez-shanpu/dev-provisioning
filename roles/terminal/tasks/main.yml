@@ -20,9 +20,6 @@
       apt:
         deb: '{{ ansible_env.HOME }}/Downloads/hyper-term.deb'
 
-  tags: hyperterm_install
-
-- block:
     - name: Put ".hyper.js"
       file:
         src: '{{ dotfiles_path }}/.hyper.js'
@@ -31,4 +28,4 @@
         force: yes
       changed_when: false
 
-  tags: hyperterm_config_set
+  tags: install_hyperterm

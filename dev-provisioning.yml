@@ -27,9 +27,6 @@
     - name: terminal
       tags: terminal
 
-    - name: kubernetes
-      tags: kubernetes
-
     - name: tex
       tags: tex
 

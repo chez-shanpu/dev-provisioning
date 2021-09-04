@@ -1,8 +1,0 @@
----
-- name: Install packages
-  become: yes
-  apt:
-    name: '{{ c_apt_packages }}'
-    update_cache: yes
-    autoclean: yes
-    autoremove: yes

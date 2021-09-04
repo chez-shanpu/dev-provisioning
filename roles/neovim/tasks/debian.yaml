@@ -1,0 +1,46 @@
+---
+- name: Install neovim and its dependencies
+  become: yes
+  apt:
+    name:
+    - neovim
+    - luajit
+    - python3-neovim
+    autoclean: yes
+    autoremove: yes
+    update_cache: yes
+
+- block:
+  - name: Add node repository
+    become: yes
+    shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    changed_when: false
+
+  - name: Install nodejs
+    become: yes
+    apt:
+      name: nodejs
+      autoclean: yes
+      autoremove: yes
+      update_cache: yes
+
+- block:
+  - name: Create nvim config dir
+    file:
+      path: ~/.config/nvim
+      state: directory
+
+  - name: Download install script for dein.vim
+    get_url:
+      url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+      dest: ~/.config/nvim/installer.sh
+    register: download_result
+    until: download_result is succeeded
+    retries: 3
+    delay: 5
+
+  - name: Install dein.vim
+    shell: sh ~/.config/nvim/installer.sh ~/.cache/dein
+    args:
+      creates: ~/.cache/dein/repos/github.com/Shougo/dein.vim
+    changed_when: false

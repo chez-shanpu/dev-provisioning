@@ -1,0 +1,45 @@
+---
+- hosts: localhost
+  strategy: linear
+  roles:
+  - name: common
+    tags: common
+
+  - name: dotfiles
+    tags: dotfiles
+
+  - name: fish
+    tags: fish
+
+  - name: anyenv
+    tags: anyenv
+
+  - name: c
+    tags: c
+
+  - name: docker
+    tags: docker
+
+  - name: font
+    tags: font
+
+  - name: go
+    tags: go
+
+  - name: hyper-terminal
+    tags: hyper-terminal
+
+  - name: kubernetes
+    tags: kubernetes
+
+  - name: neovim
+    tags: neovim
+
+  - name: python
+    tags: python
+
+  - name: tex
+    tags: tex
+
+  - name: tmux
+    tags: tmux

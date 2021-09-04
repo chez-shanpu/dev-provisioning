@@ -2,30 +2,35 @@ name: ansible_test
 on:
   push:
     branches:
-      - master
+    - master
   pull_request:
     branches:
-      - master
+    - master
 jobs:
-  provisioning_test:
-    runs-on: ubuntu-latest
+  test:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.platform }}
     env:
       ANSIBLE_FORCE_COLOR: 1
     steps:
-      - name: Install Ansible
-        run: |
-          sudo apt-get update;
-          sudo apt-get install software-properties-common;
-          sudo apt-add-repository --yes --update ppa:ansible/ansible;
-          sudo apt-get install ansible;
-      - name: Checkout code
-        uses: actions/checkout@v1
-      - name: Syntax Check
-        run: ansible-playbook -v ./dev-provisioning.yml --syntax-check
-      - name: Runnning Playbook
-        run: ansible-playbook -v ./dev-provisioning.yml
-      - name: Idempotence Test
-        run: |
-          ansible-playbook -v ./dev-provisioning.yml | grep -q 'changed=0.*failed=0' \
-          && (echo 'Idempotence test: pass' && exit 0) \
-          || (echo 'Idempotence test: fail' && exit 1)
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Run make
+      run: make
+    - name: Idempotence Test
+      run: |
+        ansible-playbook -v -e "ansible_user=$(whoami)" ./dev-provisioning.yaml | tee idempotence-out.txt \
+        | grep -q 'changed=0.*failed=0' \
+        && (echo 'Idempotence test: pass' && exit 0) \
+        || (echo 'Idempotence test: fail' && exit 1)
+    - name: Archive Idempotence Test output
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: idempotence-out
+        path: idempotence-out.txt
+#    - name: Check Ansible connection plugins
+#      if: always()
+#      run: ansible-doc -t connection -l

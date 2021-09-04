@@ -1,0 +1,12 @@
+---
+- name: Install tmux
+  community.general.homebrew:
+    name: tmux
+
+- name: Install tmux powerline pip dependencies
+  pip:
+    name:
+    - powerline-status
+    - powerline-mem-segment
+    - psutil
+    executable: pip3

@@ -1,4 +1,0 @@
----
-- include_tasks: typora.yml
-
-- include_tasks: neovim.yml

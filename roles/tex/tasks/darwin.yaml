@@ -1,0 +1,6 @@
+---
+- name: Install tex and related tools
+  homebrew_cask:
+    name:
+    - mactex
+    - skim

@@ -1,9 +1,0 @@
----
-- name: Install tex
-  become: yes
-  apt:
-    name: texlive-full
-    update_cache: yes
-    autoclean: yes
-    autoremove: yes
-

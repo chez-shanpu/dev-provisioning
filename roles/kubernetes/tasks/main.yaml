@@ -1,0 +1,6 @@
+---
+- name: Install kubectl and kubectx
+  community.general.homebrew:
+    name:
+    - 'kubectl'
+    - 'kubectx'

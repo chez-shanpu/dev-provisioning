@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  become: yes
+  apt:
+    name:
+    - gcc
+    - cmake
+    update_cache: yes
+    autoclean: yes
+    autoremove: yes

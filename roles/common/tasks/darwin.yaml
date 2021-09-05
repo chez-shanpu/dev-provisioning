@@ -1,0 +1,58 @@
+---
+- name: Update homebrew
+  changed_when: false
+  community.general.homebrew:
+    update_homebrew: yes
+#    upgrade_all: yes
+
+- name: Tap clementtsang/bottom
+  community.general.homebrew_tap:
+    name: clementtsang/bottom
+
+- name: Install brew tools
+  community.general.homebrew:
+    name:
+    - 'asdf'
+    - 'bat'
+    - 'bottom'
+    - 'coreutils'
+    - 'curl'
+    - 'direnv'
+    - 'duf'
+    - 'exa'
+    - 'fd'
+    - 'gh'
+    - 'ghq'
+    - 'jq'
+    - 'nmap'
+    - 'peco'
+    - 'pipenv'
+    - 'procs'
+    - 'tree'
+    - 'translate-shell'
+
+- name: Install brew-cask tools
+  community.general.homebrew_cask:
+    name:
+    - '1password'
+    - 'alfred'
+    - 'iterm2'
+    - 'jetbrains-toolbox'
+    - 'karabiner-elements'
+    - 'slack'
+    - 'visual-studio-code'
+    - 'wireshark'
+
+- name: Get rmtrash v1.14
+  changed_when: false
+  ansible.builtin.unarchive:
+    remote_src: yes
+    src: https://github.com/PhrozenByte/rmtrash/archive/refs/tags/v1.14.tar.gz
+    dest: ./
+
+- name: Install rmtrash
+  ansible.builtin.copy:
+    src: ./rmtrash-1.14
+    dest: /usr/local/bin/
+  become: yes
+

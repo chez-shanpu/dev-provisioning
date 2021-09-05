@@ -1,4 +1,0 @@
----
-fish_config_file:
-  - path: .config/fish/config.fish
-  - path: .config/fish/fishfile

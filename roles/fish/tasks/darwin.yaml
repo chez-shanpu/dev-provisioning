@@ -1,0 +1,44 @@
+---
+- name: Install fish by brew
+  community.general.homebrew:
+    name:
+    - 'fish'
+
+- name: Change default shell to "fish"
+  become: yes
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    shell: "/usr/local/bin/fish"
+    system: yes
+
+- name: Create fish config dir
+  file:
+    path: ~/.config/fish
+    state: directory
+
+- name: Set ansible_shell_executable to fish
+  set_fact:
+    ansible_shell_executable: "/usr/local/bin/fish"
+    ansible_shell_type: fish
+
+- name: Create functions dir
+  file:
+    path: ~/.config/fish/functions
+    state: directory
+
+- name: Install fisherman
+  get_url:
+    url: https://git.io/fisher
+    dest: ~/.config/fish/functions/fisher.fish
+  register: download_result
+  until: download_result is succeeded
+  retries: 3
+  delay: 5
+
+- name: Install fish plugins
+  shell: fisher update
+  changed_when: false
+
+- name: reflect config.fish
+  shell: source ~/.config/fish/config.fish
+  changed_when: false

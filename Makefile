@@ -24,6 +24,17 @@ endif
 .PHONY: brew
 brew: brew-$(UNAME)
 
+python-Linux:
+	sudo apt update
+	sudo apt install -y python3
+	sudo apt upgrade -y python3
+
+python-Darwin:
+	brew install python
+
+.PHONY: python
+python: python-$(UNAME)
+
 ansible-Linux:
 	sudo apt update
 	sudo apt install software-properties-common
@@ -48,7 +59,10 @@ lint:
 provision:
 	ansible-playbook $(PLAYBOOK_OPTS) -e "ansible_user=$(shell whoami)" ./dev-provisioning.yaml
 
+.PHONY: dep
+dep: brew python ansible
+
 .PHONY: all
-all: brew ansible lint provision
+all: dep lint provision
 
 .DEFAULT_GOAL=all

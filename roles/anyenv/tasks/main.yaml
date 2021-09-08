@@ -1,6 +1,20 @@
 ---
-- include_tasks: darwin.yaml
-  when: ansible_os_family == "Darwin"
+- name: Install anyenv
+  community.general.homebrew:
+    name: anyenv
 
-- include_tasks: debian.yaml
-  when: ansible_os_family == "Debian"
+- name: init anyenv
+  shell: anyenv install --init
+  args:
+    stdin: "y"
+  ignore_errors: yes
+  changed_when: false
+
+#- name: reload fish
+#  shell: source ~/.config/fish/config.fish
+#  changed_when: false
+
+- name: install "anyenv-update"
+  git:
+    repo: https://github.com/znz/anyenv-update.git
+    dest: ~/.anyenv/plugins/anyenv-update

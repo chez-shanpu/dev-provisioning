@@ -23,6 +23,7 @@
     - 'fd'
     - 'gh'
     - 'ghq'
+    - 'gnu-sed'
     - 'jq'
     - 'nmap'
     - 'peco'

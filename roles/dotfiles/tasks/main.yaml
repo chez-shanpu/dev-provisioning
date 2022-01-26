@@ -1,13 +1,13 @@
 ---
-- name: git clone my dotfiles
-  git:
-    repo: https://github.com/chez-shanpu/dotfiles
-    dest: '{{ dotfiles_path }}'
-    force: yes
-  changed_when: false
+- name: Install chezmoi
+  community.general.homebrew:
+    name:
+    - chezmoi
 
-- name: Run provision.sh
-  shell: ./provision.sh
-  args:
-    chdir: '{{ dotfiles_path }}'
+- name: chezmoi init
   changed_when: false
+  shell: chezmoi init https://github.com/chez-shanpu/dotfiles
+
+- name: chezmoi apply
+  changed_when: false
+  shell: chezmoi apply -v

@@ -23,6 +23,7 @@
     - 'fd'
     - 'gh'
     - 'ghq'
+    - 'git-delta'
     - 'gnu-sed'
     - 'jq'
     - 'nmap'

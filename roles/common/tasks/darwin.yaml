@@ -25,6 +25,7 @@
     - 'ghq'
     - 'git-delta'
     - 'gnu-sed'
+    - 'gnu-tar'
     - 'jq'
     - 'nmap'
     - 'peco'
@@ -44,6 +45,7 @@
     - 'slack'
     - 'visual-studio-code'
     - 'wireshark'
+    - 'gitify'
 
 - name: Get rmtrash v1.14
   changed_when: false

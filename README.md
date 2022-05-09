@@ -2,7 +2,7 @@
 
 ## Usage
 ```sh
-$ make PLAYBOOK_OPTS="--ask-become-pass"
+$ make PLAYBOOK_OPTS="--ask-become-pass --skip-tags tex"
 ```
 
 ## Test with Vagrant

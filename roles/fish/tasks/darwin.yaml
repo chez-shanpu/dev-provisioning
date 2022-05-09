@@ -8,7 +8,8 @@
   become: yes
   user:
     name: "{{ lookup('env', 'USER') }}"
-    shell: "/usr/local/bin/fish"
+  #    shell: "/usr/local/bin/fish"
+    shell: "/opt/homebrew/bin/fish"
     system: yes
 
 - name: Create fish config dir
@@ -18,7 +19,8 @@
 
 - name: Set ansible_shell_executable to fish
   set_fact:
-    ansible_shell_executable: "/usr/local/bin/fish"
+  #    ansible_shell_executable: "/usr/local/bin/fish"
+    ansible_shell_executable: "/opt/homebrew/bin/fish"
     ansible_shell_type: fish
 
 - name: Create functions dir

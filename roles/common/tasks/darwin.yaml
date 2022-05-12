@@ -27,6 +27,7 @@
     - 'gnu-sed'
     - 'gnu-tar'
     - 'jq'
+    - 'kustomize'
     - 'nmap'
     - 'peco'
     - 'pipenv'
@@ -39,13 +40,13 @@
     name:
     - '1password'
     - 'alfred'
+    - 'gitify'
     - 'iterm2'
     - 'jetbrains-toolbox'
     - 'karabiner-elements'
     - 'slack'
     - 'visual-studio-code'
     - 'wireshark'
-    - 'gitify'
 
 - name: Get rmtrash v1.14
   changed_when: false

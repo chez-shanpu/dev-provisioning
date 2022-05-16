@@ -34,6 +34,7 @@
     - 'procs'
     - 'tree'
     - 'translate-shell'
+    - 'watch'
 
 - name: Install brew-cask tools
   community.general.homebrew_cask:

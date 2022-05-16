@@ -11,3 +11,4 @@
 - name: chezmoi apply
   changed_when: false
   shell: chezmoi apply -v
+  ignore_errors: true

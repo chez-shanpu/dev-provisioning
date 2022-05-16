@@ -40,10 +40,13 @@
     name:
     - '1password'
     - 'alfred'
+    - 'bitwarden'
+    - 'dropbox'
     - 'gitify'
     - 'iterm2'
     - 'jetbrains-toolbox'
     - 'karabiner-elements'
+    - 'notion'
     - 'slack'
     - 'visual-studio-code'
     - 'wireshark'

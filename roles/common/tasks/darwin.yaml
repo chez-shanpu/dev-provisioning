@@ -32,6 +32,7 @@
     - 'peco'
     - 'pipenv'
     - 'procs'
+    - 'trash'
     - 'tree'
     - 'translate-shell'
     - 'watch'
@@ -51,17 +52,4 @@
     - 'slack'
     - 'visual-studio-code'
     - 'wireshark'
-
-- name: Get rmtrash v1.14
-  changed_when: false
-  ansible.builtin.unarchive:
-    remote_src: yes
-    src: https://github.com/PhrozenByte/rmtrash/archive/refs/tags/v1.14.tar.gz
-    dest: ./
-
-- name: Install rmtrash
-  ansible.builtin.copy:
-    src: ./rmtrash-1.14
-    dest: /usr/local/bin/
-  become: yes
 

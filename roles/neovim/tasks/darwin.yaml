@@ -11,6 +11,8 @@
     name:
     - 'node'
 
+# todo install pynvim
+
 - name: Download install script for dein.vim
   get_url:
     url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh

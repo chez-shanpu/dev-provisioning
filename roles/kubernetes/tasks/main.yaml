@@ -4,3 +4,4 @@
     name:
     - 'kubectl'
     - 'kubectx'
+    - 'krew'

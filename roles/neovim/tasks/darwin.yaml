@@ -3,18 +3,18 @@
   community.general.homebrew:
     state: head
     name:
-    - 'luajit'
-    - 'neovim'
+      - 'luajit'
+      - 'neovim'
 
 - name: Install neovim dependencies
   community.general.homebrew:
     name:
-    - 'node'
+      - 'node'
 
 # todo install pynvim
 
 - name: Download install script for dein.vim
-  get_url:
+  ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
     dest: ~/.config/nvim/installer.sh
   register: download_result
@@ -23,7 +23,7 @@
   delay: 5
 
 - name: Install dein.vim
-  shell: sh ~/.config/nvim/installer.sh ~/.cache/dein
+  ansible.builtin.shell: sh ~/.config/nvim/installer.sh ~/.cache/dein
   args:
     creates: ~/.cache/dein/repos/github.com/Shougo/dein.vim
   changed_when: false

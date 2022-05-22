@@ -2,13 +2,13 @@
 - name: Install chezmoi
   community.general.homebrew:
     name:
-    - chezmoi
+      - chezmoi
 
 - name: chezmoi init
   changed_when: false
-  shell: chezmoi init https://github.com/chez-shanpu/dotfiles
+  ansible.builtin.shell: chezmoi init https://github.com/chez-shanpu/dotfiles
 
 - name: chezmoi apply
   changed_when: false
-  shell: chezmoi apply -v
+  ansible.builtin.shell: chezmoi apply -v
   ignore_errors: true

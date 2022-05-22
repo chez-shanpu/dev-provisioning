@@ -1,37 +1,37 @@
 ---
 - name: Install neovim and its dependencies
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name:
     - neovim
     - luajit
     - python3-neovim
-    autoclean: yes
-    autoremove: yes
-    update_cache: yes
+    autoclean: true
+    autoremove: true
+    update_cache: true
 
 - block:
   - name: Add node repository
-    become: yes
-    shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    become: true
+    ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
     changed_when: false
 
   - name: Install nodejs
-    become: yes
-    apt:
+    become: true
+    ansible.builtin.apt:
       name: nodejs
-      autoclean: yes
-      autoremove: yes
-      update_cache: yes
+      autoclean: true
+      autoremove: true
+      update_cache: true
 
 - block:
   - name: Create nvim config dir
-    file:
+    ansible.builtin.file:
       path: ~/.config/nvim
       state: directory
 
   - name: Download install script for dein.vim
-    get_url:
+    ansible.builtin.get_url:
       url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
       dest: ~/.config/nvim/installer.sh
     register: download_result
@@ -40,7 +40,7 @@
     delay: 5
 
   - name: Install dein.vim
-    shell: sh ~/.config/nvim/installer.sh ~/.cache/dein
+    ansible.builtin.shell: sh ~/.config/nvim/installer.sh ~/.cache/dein
     args:
       creates: ~/.cache/dein/repos/github.com/Shougo/dein.vim
     changed_when: false

@@ -3,26 +3,32 @@ SHELL:=/bin/bash
 UNAME=$(shell uname)
 PLAYBOOK_OPTS="-vvv"
 
+ANSIBLE_LINT_EXCLUDE="-x indentation"
+
 brew-Linux:
 ifeq (, $(shell which brew))
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | /bin/bash
 	test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 	test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 	test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
 	echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 else
-	echo "linuxbrew is already exits."
+	@echo "linuxbrew is already exits."
 endif
 
 brew-Darwin:
 ifeq (, $(shell which brew))
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | /bin/bash
 else
 	@echo "homebrew is already exits."
 endif
 
 .PHONY: brew
 brew: brew-$(UNAME)
+
+.PHONY: age
+age: 
+	brew install age
 
 python-Linux:
 	sudo apt update
@@ -53,14 +59,14 @@ ansible: ansible-$(UNAME)
 .PHONY: lint
 lint:
 	ansible-playbook -v --syntax-check ./dev-provisioning.yaml
-	ansible-lint $(wildcard ./*/*/*/*.yaml)
+	ansible-lint $(ANSIBLE_LINT_EXCLUDE) $(wildcard ./*/*/*/*.yaml)
 
 .PHONY: provision
 provision:
 	ansible-playbook $(PLAYBOOK_OPTS) -e "ansible_user=$(shell whoami)" ./dev-provisioning.yaml
 
 .PHONY: dep
-dep: brew python ansible
+dep: brew age python ansible
 
 .PHONY: all
 all: dep lint provision

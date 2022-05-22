@@ -1,8 +1,8 @@
 ---
 - name: Install tex
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: texlive-full
-    update_cache: yes
-    autoclean: yes
-    autoremove: yes
+    update_cache: true
+    autoclean: true
+    autoremove: true

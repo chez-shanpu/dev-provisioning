@@ -4,9 +4,9 @@
     name: tmux
 
 - name: Install tmux powerline pip dependencies
-  pip:
+  ansible.builtin.pip:
     name:
-    - powerline-status
-    - powerline-mem-segment
-    - psutil
+      - powerline-status
+      - powerline-mem-segment
+      - psutil
     executable: pip3

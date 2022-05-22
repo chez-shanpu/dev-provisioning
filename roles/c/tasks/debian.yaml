@@ -1,10 +1,10 @@
 ---
 - name: Install packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name:
-    - gcc
-    - cmake
-    update_cache: yes
-    autoclean: yes
-    autoremove: yes
+      - gcc
+      - cmake
+    update_cache: true
+    autoclean: true
+    autoremove: true

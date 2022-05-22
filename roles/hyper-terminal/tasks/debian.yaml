@@ -1,11 +1,11 @@
 ---
 - name: Create Downloads dir if it doesn`t exist
-  file:
+  ansible.builtin.file:
     path: ~/Downloads
     state: directory
 
 - name: Get deb Hyper-term
-  get_url:
+  ansible.builtin.get_url:
     url: https://releases.hyper.is/download/deb
     dest: '{{ ansible_env.HOME }}/Downloads/hyper-term.deb'
   register: download_result
@@ -15,6 +15,6 @@
   changed_when: false
 
 - name: Install Hyper-term
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     deb: '{{ ansible_env.HOME }}/Downloads/hyper-term.deb'

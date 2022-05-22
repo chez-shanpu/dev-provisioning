@@ -2,8 +2,8 @@
 - name: Update homebrew
   changed_when: false
   community.general.homebrew:
-    update_homebrew: yes
-#    upgrade_all: yes
+    update_homebrew: true
+#    upgrade_all: true
 
 - name: Tap clementtsang/bottom
   community.general.homebrew_tap:
@@ -12,44 +12,43 @@
 - name: Install brew tools
   community.general.homebrew:
     name:
-    - 'asdf'
-    - 'bat'
-    - 'bottom'
-    - 'coreutils'
-    - 'curl'
-    - 'direnv'
-    - 'duf'
-    - 'exa'
-    - 'fd'
-    - 'gh'
-    - 'ghq'
-    - 'git-delta'
-    - 'gnu-sed'
-    - 'gnu-tar'
-    - 'jq'
-    - 'kustomize'
-    - 'nmap'
-    - 'peco'
-    - 'pipenv'
-    - 'procs'
-    - 'trash'
-    - 'tree'
-    - 'translate-shell'
-    - 'watch'
+      - 'asdf'
+      - 'bat'
+      - 'bottom'
+      - 'coreutils'
+      - 'curl'
+      - 'direnv'
+      - 'duf'
+      - 'exa'
+      - 'fd'
+      - 'gh'
+      - 'ghq'
+      - 'git-delta'
+      - 'gnu-sed'
+      - 'gnu-tar'
+      - 'jq'
+      - 'kustomize'
+      - 'nmap'
+      - 'peco'
+      - 'pipenv'
+      - 'procs'
+      - 'trash'
+      - 'tree'
+      - 'translate-shell'
+      - 'watch'
 
 - name: Install brew-cask tools
   community.general.homebrew_cask:
     name:
-    - '1password'
-    - 'alfred'
-    - 'bitwarden'
-    - 'dropbox'
-    - 'gitify'
-    - 'iterm2'
-    - 'jetbrains-toolbox'
-    - 'karabiner-elements'
-    - 'notion'
-    - 'slack'
-    - 'visual-studio-code'
-    - 'wireshark'
-
+      - '1password'
+      - 'alfred'
+      - 'bitwarden'
+      - 'dropbox'
+      - 'gitify'
+      - 'iterm2'
+      - 'jetbrains-toolbox'
+      - 'karabiner-elements'
+      - 'notion'
+      - 'slack'
+      - 'visual-studio-code'
+      - 'wireshark'

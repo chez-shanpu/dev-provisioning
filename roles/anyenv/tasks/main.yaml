@@ -4,17 +4,13 @@
     name: anyenv
 
 - name: init anyenv
-  shell: anyenv install --init
+  ansible.builtin.shell: anyenv install --init
   args:
     stdin: "y"
-  ignore_errors: yes
+  ignore_errors: true
   changed_when: false
 
-#- name: reload fish
-#  shell: source ~/.config/fish/config.fish
-#  changed_when: false
-
 - name: install "anyenv-update"
-  git:
+  ansible.builtin.git:
     repo: https://github.com/znz/anyenv-update.git
     dest: ~/.anyenv/plugins/anyenv-update

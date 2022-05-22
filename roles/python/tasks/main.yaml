@@ -1,10 +1,10 @@
 ---
 - name: Install pyenv
-  shell: anyenv install pyenv
+  ansible.builtin.shell: anyenv install pyenv
   args:
     creates: ~/.anyenv/envs/pyenv/bin/pyenv
   changed_when: false
 
 - name: reload fish
-  shell: source ~/.config/fish/config.fish
+  ansible.builtin.shell: source ~/.config/fish/config.fish
   changed_when: false

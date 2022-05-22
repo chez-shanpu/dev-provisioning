@@ -1,51 +1,51 @@
 ---
 - block:
-  - name: Install packages
-    become: yes
-    apt:
-      name:
-      - build-essential
-      - curl
-      - git
-      - libssl-dev
-      - llvm
-      - make
-      - python3
-      - python3-pip
-      - python-is-python3
-      - trash-cli
-      - wget
-      autoclean: yes
-      autoremove: yes
-      update_cache: yes
+    - name: Install packages
+      become: true
+      ansible.builtin.apt:
+        name:
+          - build-essential
+          - curl
+          - git
+          - libssl-dev
+          - llvm
+          - make
+          - python3
+          - python3-pip
+          - python-is-python3
+          - trash-cli
+          - wget
+        autoclean: true
+        autoremove: true
+        update_cache: true
 
-  - name: Upgrade all packages to the latest version
-    become: yes
-    apt:
-      upgrade: safe
-    changed_when: false
+    - name: Upgrade all packages to the latest version
+      become: true
+      ansible.builtin.apt:
+        upgrade: safe
+      changed_when: false
 
 - block:
-  - name: Update homebrew
-    changed_when: false
-    community.general.homebrew:
-      update_homebrew: yes
+    - name: Update homebrew
+      changed_when: false
+      community.general.homebrew:
+        update_homebrew: true
 
-  - name: Install tools by brew
-    community.general.homebrew:
-      name:
-      - asdf
-      - bat
-      - direnv
-      - exa
-      - fd
-      - gh
-      - ghq
-      - peco
-      - ripgrep
+    - name: Install tools by brew
+      community.general.homebrew:
+        name:
+          - asdf
+          - bat
+          - direnv
+          - exa
+          - fd
+          - gh
+          - ghq
+          - peco
+          - ripgrep
 
-  - name: Install tools by brew --build-from-source
-    community.general.homebrew:
-      name:
-      - duf
-      install_options: build-from-source
+    - name: Install tools by brew --build-from-source
+      community.general.homebrew:
+        name:
+          - duf
+        install_options: build-from-source

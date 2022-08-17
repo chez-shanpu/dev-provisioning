@@ -3,7 +3,7 @@ SHELL:=/bin/bash
 UNAME=$(shell uname)
 PLAYBOOK_OPTS="-vvv"
 
-ANSIBLE_LINT_EXCLUDE="-x indentation"
+ANSIBLE_LINT_EXCLUDE="-x indentation,unnamed-task,yaml[indentation]"
 
 brew-Linux:
 ifeq (, $(shell which brew))

@@ -1,0 +1,172 @@
+- name: Use Dark mode
+  osx_defaults:
+    key: AppleInterfaceStyle
+    type: string
+    value: "Dark"
+    state: present
+
+- name: Disable auto sort in working space
+  osx_defaults:
+    domain: com.apple.dock
+    key: mru-spaces
+    type: bool
+    value: false
+    state: present
+
+- name: Dock autohide
+  osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+    state: present
+
+- name: Enable two finger tap
+  osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadCornerSecondaryClick
+    type: int
+    value: 2
+    state: present
+
+- name: Enable tap as click
+  osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: Clicking
+    type: int
+    value: 1
+    state: present
+
+- name: Automatically open a new Finder window when a volume is mounted
+  block:
+  - osx_defaults:
+      domain: com.apple.frameworks.diskimages
+      key: auto-open-ro-root
+      type: bool
+      value: true
+      state: present
+
+  - osx_defaults:
+      domain: com.apple.frameworks.diskimages
+      key: auto-open-rw-root
+      type: bool
+      value: true
+      state: present
+
+  - osx_defaults:
+      domain: com.apple.finder
+      key: OpenWindowForNewRemovableDisk
+      type: bool
+      value: true
+      state: present
+
+- name: Set HOME dir as the default location for new Finder windows
+  block:
+  - osx_defaults:
+      domain: com.apple.finder
+      key: NewWindowTarget
+      type: string
+      value: "PfDe"
+      state: present
+
+  - osx_defaults:
+      domain: com.apple.finder
+      key: NewWindowTargetPath
+      type: string
+      value: "file://${HOME}/"
+      state: present
+
+- name: Show Status bar in Finder
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    type: bool
+    value: true
+    state: present
+
+- name: Show Path bar in Finder
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+    state: present
+
+- name: Show Tab bar in Finder
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowTabView
+    type: bool
+    value: true
+    state: present
+
+- name: Show the hidden files
+  osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: string
+    value: "TRUE"
+    state: present
+
+- name: Date format
+  osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: DateFormat
+    type: string
+    value: "M\\U6708d\\U65e5(EEE)  H:mm:ss"
+    state: present
+
+- name: Key repeat
+  osx_defaults:
+    key: InitialKeyRepeat
+    type: int
+    value: 15
+    state: present
+
+- name: Use fn keys as function keys in external keyboards
+  osx_defaults:
+    domain: com.apple.keyboard
+    key: fnState
+    type: bool
+    value: true
+    state: present
+
+- name: Font
+  osx_defaults:
+    domain: com.apple.inputmethod.Kotoeri
+    key: JIMPrefCandidateWindowFontKey
+    type: string
+    value: "HiraginoSans-W4"
+    state: present
+
+- name: Font Size
+  osx_defaults:
+    domain: com.apple.inputmethod.Kotoeri
+    key: JIMPrefCandidateWindowFontSizeKey
+    type: int
+    value: 16
+    state: present
+
+- name: Use slack key as a dot
+  osx_defaults:
+    domain: com.apple.inputmethod.Kotoeri
+    key: JIMPrefCharacterForSlashKey
+    type: int
+    value: 1
+    state: present
+
+- name: Use yen key as back-slash
+  osx_defaults:
+    domain: com.apple.inputmethod.Kotoeri
+    key: JIMPrefCharacterForYenKey
+    type: int
+    value: 1
+    state: present
+
+- name: Not FullWidthNumeralCharacters
+  osx_defaults:
+    domain: com.apple.inputmethod.Kotoeri
+    key: JIMPrefFullWidthNumeralCharactersKey
+    type: int
+    value: 0
+    state: present

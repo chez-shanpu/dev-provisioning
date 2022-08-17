@@ -5,6 +5,10 @@
   - name: common
     tags: common
 
+  - name: mac
+    tags: mac
+    when: ansible_os_family == "Darwin"
+
   - name: dotfiles
     tags: dotfiles
 

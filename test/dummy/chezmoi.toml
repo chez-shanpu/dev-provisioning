@@ -1,0 +1,11 @@
+########## data ##########
+[data]
+email = "dummy@mail"
+
+# git
+git_name = "dummy"
+git_signingkey = "dummy"
+
+# brew
+homebrew_github_token = "dummy"
+

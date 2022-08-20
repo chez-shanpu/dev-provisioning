@@ -17,6 +17,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Put dummy chezmoi profile
+      run: |
+        mkdir -p ~/.config/chezmoi/
+        cp ./test/dummy/chezmoi.toml ~/.config/chezmoi/
     - name: Run make
       run: make
     - name: Idempotence Test

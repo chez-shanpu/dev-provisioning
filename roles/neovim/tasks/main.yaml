@@ -1,6 +1,8 @@
 ---
-- include_tasks: darwin.yaml
+- name: Setup nvim in Darwin
+  ansible.builtin.include_tasks: darwin.yaml
   when: ansible_os_family == "Darwin"
 
-- include_tasks: debian.yaml
+- name: Setup nvim in Debian
+  ansible.builtin.include_tasks: debian.yaml
   when: ansible_os_family == "Debian"

@@ -1,4 +1,9 @@
 github_user: chez-shanpu
-ghq_root: '{{ lookup("env","HOME") }}/ghq'
+ghq_root: '{{ lookup("env", "HOME") }}/ghq'
 repos_root: '{{ ghq_root }}/github.com/{{ github_user }}'
-dotfiles_path: '{{ repos_root }}/dotfiles'
+
+# Chezmoi configuration
+chezmoi_email: 'tomoki.sugiura@mail.shanpu.info'
+chezmoi_git_name: 'chez-shanpu'
+chezmoi_git_signingkey: ''
+chezmoi_homebrew_github_token: ''

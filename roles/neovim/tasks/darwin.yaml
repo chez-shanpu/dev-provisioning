@@ -1,9 +1,23 @@
 ---
-- name: Install neovim nighty
+- name: Unlink existing luajit if present
+  ansible.builtin.shell: |
+    if brew list luajit &>/dev/null; then
+      brew unlink luajit || true
+    fi
+  args:
+    executable: /bin/bash
+  changed_when: false
+
+- name: Install luajit head version
   community.general.homebrew:
     state: head
     name:
       - 'luajit'
+
+- name: Install neovim nighty
+  community.general.homebrew:
+    state: head
+    name:
       - 'neovim'
 
 - name: Install neovim dependencies
@@ -13,17 +27,24 @@
 
 # todo install pynvim
 
-- name: Download install script for dein.vim
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
-    dest: ~/.config/nvim/installer.sh
-  register: download_result
-  until: download_result is succeeded
-  retries: 3
-  delay: 5
+- name: Create nvim config dir
+  ansible.builtin.file:
+    path: ~/.config/nvim
+    state: directory
 
-- name: Install dein.vim
-  ansible.builtin.shell: sh ~/.config/nvim/installer.sh ~/.cache/dein
+- name: Create dein cache directory
+  ansible.builtin.file:
+    path: ~/.cache/dein
+    state: directory
+
+- name: Download dein-installer script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh
+    dest: /tmp/dein-installer.sh
+    mode: '0755'
+
+- name: Install dein.vim using dein-installer
+  ansible.builtin.shell: sh /tmp/dein-installer.sh --use-neovim-config --overwrite-config ~/.cache/dein
   args:
     creates: ~/.cache/dein/repos/github.com/Shougo/dein.vim
   changed_when: false

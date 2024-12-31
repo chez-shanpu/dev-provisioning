@@ -55,6 +55,6 @@
   ansible.builtin.shell: fisher update
   changed_when: false
 
-- name: reflect config.fish
+- name: Reflect config.fish
   ansible.builtin.shell: source ~/.config/fish/config.fish
   changed_when: false

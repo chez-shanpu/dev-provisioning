@@ -1,6 +1,8 @@
 ---
-- include_tasks: darwin.yaml
+- name: Setup docker in Darwin
+  ansible.builtin.include_tasks: darwin.yaml
   when: ansible_os_family == "Darwin"
 
-- include_tasks: ubuntu.yaml
+- name: Setup docker in Ubuntu
+  ansible.builtin.include_tasks: ubuntu.yaml
   when: ansible_distribution == "Ubuntu"

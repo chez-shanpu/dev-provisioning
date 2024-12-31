@@ -1,13 +1,7 @@
 ---
-- block:
-    - name: brew tap homebrew/cask-fonts
-      community.general.homebrew_tap: tap=homebrew/cask-fonts state=present
-
-    - name: Install fonts
-      community.general.homebrew_cask:
-        name:
-          - font-ricty-diminished
-          - font-powerline-symbols
-          - font-cica
-
-  tags: font_install
+- name: Install fonts
+  community.general.homebrew_cask:
+    name:
+      - font-ricty-diminished
+      - font-powerline-symbols
+      - font-cica

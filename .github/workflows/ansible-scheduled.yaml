@@ -1,7 +1,7 @@
 name: ansible_test_scheduled
 on:
   schedule:
-  - cron: '0 0 * * *'
+    - cron: '0 0 * * *'
 jobs:
   test:
     strategy:
@@ -11,22 +11,22 @@ jobs:
     env:
       ANSIBLE_FORCE_COLOR: 1
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Run make
-      run: make
-    - name: Idempotence Test
-      run: |
-        ansible-playbook -v -e "ansible_user=$(whoami)" ./dev-provisioning.yaml | tee idempotence-out.txt \
-        | grep -q 'changed=0.*failed=0' \
-        && (echo 'Idempotence test: pass' && exit 0) \
-        || (echo 'Idempotence test: fail' && exit 1)
-    - name: Archive Idempotence Test output
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: idempotence-out
-        path: idempotence-out.txt
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run make
+        run: make
+      - name: Idempotence Test
+        run: |
+          ansible-playbook -v -e "ansible_user=$(whoami)" ./dev-provisioning.yaml | tee idempotence-out-${{ matrix.platform }}.txt \
+          | grep -q 'changed=0.*failed=0' \
+          && (echo 'Idempotence test: pass' && exit 0) \
+          || (echo 'Idempotence test: fail' && exit 1)
+      - name: Archive Idempotence Test output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: idempotence-out-${{ matrix.platform }}
+          path: idempotence-out-${{ matrix.platform }}.txt
 #    - name: Check Ansible connection plugins
 #      if: always()
 #      run: ansible-doc -t connection -l

@@ -6,22 +6,27 @@ PLAYBOOK_OPTS="-vvv"
 ANSIBLE_LINT_EXCLUDE="-x indentation,unnamed-task,yaml[indentation]"
 
 brew-Linux:
-ifeq (, $(shell which brew))
-	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | /bin/bash
-	test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-	test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-	test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-	echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-else
-	@echo "linuxbrew is already exits."
-endif
+	@if ! command -v brew &> /dev/null; then \
+		echo "Installing Homebrew for Linux..."; \
+		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
+		if [ -d /home/linuxbrew/.linuxbrew ]; then \
+			echo 'eval "$$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc; \
+		elif [ -d ~/.linuxbrew ]; then \
+			echo 'eval "$$(~/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc; \
+		fi; \
+	else \
+		echo "Homebrew is already installed"; \
+	fi
 
 brew-Darwin:
-ifeq (, $(shell which brew))
-	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | /bin/bash
-else
-	@echo "homebrew is already exits."
-endif
+	@if ! command -v brew &> /dev/null; then \
+		echo "Installing Homebrew for macOS..."; \
+		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
+		echo 'eval "$$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile; \
+		eval "$$(/opt/homebrew/bin/brew shellenv)"; \
+	else \
+		echo "Homebrew is already installed"; \
+	fi
 
 .PHONY: brew
 brew: brew-$(UNAME)
@@ -31,9 +36,9 @@ age:
 	brew install age
 
 python-Linux:
-	sudo apt update
-	sudo apt install -y python3
-	sudo apt upgrade -y python3
+	sudo apt-get update
+	sudo apt-get install -y python3
+	sudo apt-get upgrade -y python3
 
 python-Darwin:
 	brew install python
@@ -42,11 +47,11 @@ python-Darwin:
 python: python-$(UNAME)
 
 ansible-Linux:
-	sudo apt update
-	sudo apt install software-properties-common
-	sudo add-apt-repository --yes --update ppa:ansible/ansible
-	sudo apt install -y ansible
-	sudo apt install -y ansible-lint
+	sudo apt-get update
+	sudo apt-get install -y software-properties-common
+	sudo apt-add-repository --yes --update ppa:ansible/ansible
+	sudo apt-get install -y ansible
+	sudo apt-get install -y ansible-lint
 
 ansible-Darwin:
 	brew install ansible

@@ -4,7 +4,9 @@
     name:
       - 'fish'
 
-- block:
+- name: Default to fish
+  tags: fish_chsh
+  block:
     - name: Obtain path to fish
       ansible.builtin.shell: which fish
       register: fish_path
@@ -14,12 +16,12 @@
       become: true
       ansible.builtin.user:
         name: '{{ ansible_user }}'
-        ansible.builtin.shell: '{{ fish_path.stdout }}'
+        shell: '{{ fish_path.stdout }}'
         system: true
 
-  tags: fish_chsh
-
-- block:
+- name: Configure fish
+  tags: fish_config
+  block:
     - name: Create fish config dir
       ansible.builtin.file:
         path: ~/.config/fish
@@ -54,8 +56,6 @@
       ansible.builtin.shell: fisher update
       changed_when: false
 
-    - name: reflect config.fish
+    - name: Reflect config.fish
       ansible.builtin.shell: source ~/.config/fish/config.fish
       changed_when: false
-
-  tags: fish_config

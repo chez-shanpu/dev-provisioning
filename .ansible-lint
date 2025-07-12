@@ -1,9 +1,9 @@
 exclude_paths:
-- roles/neovim/tasks/debian.yaml
+  - roles/neovim/tasks/debian.yaml
 skip_list:
-- command-instead-of-shell
-- ignore-errors
-- git-latest
-- risky-file-permissions
+  - command-instead-of-shell
+  - ignore-errors
+  - git-latest
+  - risky-file-permissions
 use_default_rules: true
 verbosity: 1

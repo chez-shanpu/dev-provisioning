@@ -4,11 +4,16 @@
     name:
       - chezmoi
 
-- name: chezmoi init
+- name: Init chezmoi
   changed_when: false
   ansible.builtin.shell: chezmoi init https://github.com/chez-shanpu/dotfiles
+  environment:
+    CHEZMOI_EMAIL: "{{ chezmoi_email }}"
+    CHEZMOI_GIT_NAME: "{{ chezmoi_git_name }}"
+    CHEZMOI_GIT_SIGNINGKEY: "{{ chezmoi_git_signingkey }}"
+    CHEZMOI_HOMEBREW_GITHUB_TOKEN: "{{ chezmoi_homebrew_github_token }}"
 
-- name: chezmoi apply
+- name: Apply chezmoi
   changed_when: false
   ansible.builtin.shell: chezmoi apply -v
   ignore_errors: true

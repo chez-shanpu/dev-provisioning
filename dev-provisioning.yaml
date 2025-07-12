@@ -2,8 +2,8 @@
 - hosts: localhost
   strategy: linear
   roles:
-  - name: common
-    tags: common
+  - name: tools
+    tags: tools
 
   - name: mac
     tags: mac
@@ -14,9 +14,6 @@
 
   - name: fish
     tags: fish
-
-  - name: anyenv
-    tags: anyenv
 
   - name: c
     tags: c
@@ -30,17 +27,11 @@
   - name: go
     tags: go
 
-  - name: hyper-terminal
-    tags: hyper-terminal
-
   - name: kubernetes
     tags: kubernetes
 
   - name: neovim
     tags: neovim
-
-  - name: python
-    tags: python
 
   - name: tex
     tags: tex

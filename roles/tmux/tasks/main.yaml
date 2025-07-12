@@ -3,10 +3,17 @@
   community.general.homebrew:
     name: tmux
 
-- name: Install tmux powerline pip dependencies
-  ansible.builtin.pip:
-    name:
-      - powerline-status
+- name: Install powerline-status with pipx
+  community.general.pipx:
+    name: powerline-status
+    state: present
+    executable: pipx
+
+- name: Inject additional packages into powerline-status
+  community.general.pipx:
+    name: powerline-status
+    state: inject
+    inject_packages:
       - powerline-mem-segment
       - psutil
-    executable: pip3
+    executable: pipx

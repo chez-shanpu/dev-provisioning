@@ -10,37 +10,34 @@
     autoremove: true
     update_cache: true
 
-- block:
-  - name: Add node repository
-    become: true
-    ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-    changed_when: false
+- name: Install node
+  become: true
+  ansible.builtin.apt:
+    name: nodejs
+    autoclean: true
+    autoremove: true
+    update_cache: true
 
-  - name: Install nodejs
-    become: true
-    ansible.builtin.apt:
-      name: nodejs
-      autoclean: true
-      autoremove: true
-      update_cache: true
-
-- block:
+- name: Configure nvim
+  block:
   - name: Create nvim config dir
     ansible.builtin.file:
       path: ~/.config/nvim
       state: directory
 
-  - name: Download install script for dein.vim
-    ansible.builtin.get_url:
-      url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
-      dest: ~/.config/nvim/installer.sh
-    register: download_result
-    until: download_result is succeeded
-    retries: 3
-    delay: 5
+  - name: Create dein cache directory
+    ansible.builtin.file:
+      path: ~/.cache/dein
+      state: directory
 
-  - name: Install dein.vim
-    ansible.builtin.shell: sh ~/.config/nvim/installer.sh ~/.cache/dein
+  - name: Download dein-installer script
+    ansible.builtin.get_url:
+      url: https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh
+      dest: /tmp/dein-installer.sh
+      mode: '0755'
+
+  - name: Install dein.vim using dein-installer
+    ansible.builtin.shell: sh /tmp/dein-installer.sh --use-neovim-config --overwrite-config ~/.cache/dein
     args:
       creates: ~/.cache/dein/repos/github.com/Shougo/dein.vim
     changed_when: false

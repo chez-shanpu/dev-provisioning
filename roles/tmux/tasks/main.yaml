@@ -3,17 +3,13 @@
   community.general.homebrew:
     name: tmux
 
-- name: Install powerline-status with pipx
-  community.general.pipx:
-    name: powerline-status
-    state: present
-    executable: pipx
-
-- name: Inject additional packages into powerline-status
-  community.general.pipx:
-    name: powerline-status
-    state: inject
-    inject_packages:
-      - powerline-mem-segment
-      - psutil
-    executable: pipx
+- name: Install Python tools with uv
+  ansible.builtin.shell: |
+    uv tool install {{ item }}
+  args:
+    creates: "{{ ansible_env.HOME }}/.local/bin/{{ item }}"
+    executable: /bin/bash
+  with_items:
+    - powerline-status
+    - powerline-mem-segment
+    - psutil

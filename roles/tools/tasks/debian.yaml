@@ -40,7 +40,7 @@
       - gh
       - ghq
       - peco
-      - pipx
+      - uv
       - ripgrep
 
 - name: Install tools by brew --build-from-source

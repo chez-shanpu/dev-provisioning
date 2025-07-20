@@ -33,7 +33,7 @@
       - 'nmap'
       - 'peco'
       - 'pipenv'
-      - 'pipx'
+      - 'uv'
       - 'procs'
       - 'ripgrep'
       - 'tree'

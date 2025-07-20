@@ -46,19 +46,10 @@ python-Darwin:
 .PHONY: python
 python: python-$(UNAME)
 
-ansible-Linux:
-	sudo apt-get update
-	sudo apt-get install -y software-properties-common
-	sudo apt-add-repository --yes --update ppa:ansible/ansible
-	sudo apt-get install -y ansible
-	sudo apt-get install -y ansible-lint
-
-ansible-Darwin:
+.PHONY: ansible
+ansible:
 	brew install ansible
 	brew install ansible-lint
-
-.PHONY: ansible
-ansible: ansible-$(UNAME)
 	ansible-galaxy collection install community.general
 
 .PHONY: lint

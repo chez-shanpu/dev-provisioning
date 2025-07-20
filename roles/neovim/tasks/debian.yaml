@@ -17,27 +17,3 @@
     autoclean: true
     autoremove: true
     update_cache: true
-
-- name: Configure nvim
-  block:
-  - name: Create nvim config dir
-    ansible.builtin.file:
-      path: ~/.config/nvim
-      state: directory
-
-  - name: Create dein cache directory
-    ansible.builtin.file:
-      path: ~/.cache/dein
-      state: directory
-
-  - name: Download dein-installer script
-    ansible.builtin.get_url:
-      url: https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh
-      dest: /tmp/dein-installer.sh
-      mode: '0755'
-
-  - name: Install dein.vim using dein-installer
-    ansible.builtin.shell: sh /tmp/dein-installer.sh --use-neovim-config --overwrite-config ~/.cache/dein
-    args:
-      creates: ~/.cache/dein/repos/github.com/Shougo/dein.vim
-    changed_when: false

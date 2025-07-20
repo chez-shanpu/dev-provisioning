@@ -3,13 +3,9 @@
   community.general.homebrew:
     name: tmux
 
-- name: Install Python tools with uv
+- name: Install powerline-status with uv
   ansible.builtin.shell: |
-    uv tool install {{ item }}
+    uv tool install powerline-status --with psutil
   args:
-    creates: "{{ ansible_env.HOME }}/.local/bin/{{ item }}"
+    creates: "{{ ansible_env.HOME }}/.local/bin/powerline"
     executable: /bin/bash
-  with_items:
-    - powerline-status
-    - powerline-mem-segment
-    - psutil

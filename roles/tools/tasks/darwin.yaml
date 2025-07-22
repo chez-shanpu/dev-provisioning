@@ -12,8 +12,8 @@
 - name: Install brew tools
   community.general.homebrew:
     name:
-      - 'asdf'
       - 'aqua'
+      - 'asdf'
       - 'bat'
       - 'bottom'
       - 'coreutils'
@@ -31,13 +31,14 @@
       - 'jq'
       - 'kustomize'
       - 'nmap'
+      - 'node'
       - 'peco'
       - 'pipenv'
-      - 'uv'
       - 'procs'
       - 'ripgrep'
-      - 'tree'
       - 'translate-shell'
+      - 'tree'
+      - 'uv'
       - 'watch'
 
 - name: Install brew-cask tools

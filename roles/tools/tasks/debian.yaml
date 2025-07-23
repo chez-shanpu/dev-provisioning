@@ -39,9 +39,10 @@
       - fd
       - gh
       - ghq
+      - node
       - peco
-      - uv
       - ripgrep
+      - uv
 
 - name: Install tools by brew --build-from-source
   community.general.homebrew:

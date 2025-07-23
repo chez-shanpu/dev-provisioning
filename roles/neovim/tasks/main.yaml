@@ -1,8 +1,21 @@
 ---
-- name: Setup nvim in Darwin
-  ansible.builtin.include_tasks: darwin.yaml
-  when: ansible_os_family == "Darwin"
+- name: Unlink existing luajit if present
+  ansible.builtin.shell: |
+    if brew list luajit &>/dev/null; then
+      brew unlink luajit || true
+    fi
+  args:
+    executable: /bin/bash
+  changed_when: false
 
-- name: Setup nvim in Debian
-  ansible.builtin.include_tasks: debian.yaml
-  when: ansible_os_family == "Debian"
+- name: Install luajit head version
+  community.general.homebrew:
+    state: head
+    name:
+      - 'luajit'
+
+- name: Install neovim nighty
+  community.general.homebrew:
+    state: head
+    name:
+      - 'neovim'

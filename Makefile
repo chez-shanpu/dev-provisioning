@@ -9,11 +9,10 @@ brew-Linux:
 	@if ! command -v brew &> /dev/null; then \
 		echo "Installing Homebrew for Linux..."; \
 		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
-		if [ -d /home/linuxbrew/.linuxbrew ]; then \
-			echo 'eval "$$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc; \
-		elif [ -d ~/.linuxbrew ]; then \
-			echo 'eval "$$(~/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc; \
-		fi; \
+		echo >> ~/.bashrc; \
+		echo 'eval "$$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc; \
+		eval "$$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"; \
+		sudo apt-get install -y build-essential; \
 	else \
 		echo "Homebrew is already installed"; \
 	fi

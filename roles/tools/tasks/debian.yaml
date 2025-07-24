@@ -32,6 +32,7 @@
 - name: Install tools by brew
   community.general.homebrew:
     name:
+      - aqua
       - asdf
       - bat
       - direnv

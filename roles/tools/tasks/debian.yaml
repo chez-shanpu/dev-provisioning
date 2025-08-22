@@ -36,6 +36,7 @@
       - asdf
       - bat
       - direnv
+      - duf
       - eza
       - fd
       - gh
@@ -44,9 +45,3 @@
       - peco
       - ripgrep
       - uv
-
-- name: Install tools by brew --build-from-source
-  community.general.homebrew:
-    name:
-      - duf
-    install_options: build-from-source

@@ -1,21 +1,10 @@
 ---
-- name: Unlink existing luajit if present
-  ansible.builtin.shell: |
-    if brew list luajit &>/dev/null; then
-      brew unlink luajit || true
-    fi
-  args:
-    executable: /bin/bash
-  changed_when: false
-
-- name: Install luajit head version
+- name: Install luajit
   community.general.homebrew:
-    state: head
     name:
       - 'luajit'
 
 - name: Install neovim nighty
   community.general.homebrew:
-    state: head
     name:
       - 'neovim'

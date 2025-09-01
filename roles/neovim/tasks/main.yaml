@@ -6,6 +6,5 @@
 
 - name: Install neovim nighty
   community.general.homebrew:
-    state: head
     name:
       - 'neovim'

@@ -3,4 +3,3 @@
   community.general.homebrew_cask:
     name:
       - mactex
-      - skim

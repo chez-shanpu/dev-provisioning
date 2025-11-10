@@ -1,8 +1,0 @@
----
-- name: Setup tex in Darwin
-  ansible.builtin.include_tasks: darwin.yaml
-  when: ansible_os_family == "Darwin"
-
-- name: Setup tex in Debian
-  ansible.builtin.include_tasks: debian.yaml
-  when: ansible_os_family == "Debian"

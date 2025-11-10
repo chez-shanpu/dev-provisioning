@@ -1,5 +1,0 @@
----
-- name: Install tex and related tools
-  community.general.homebrew_cask:
-    name:
-      - mactex

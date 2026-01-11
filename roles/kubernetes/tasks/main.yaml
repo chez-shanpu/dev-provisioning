@@ -4,4 +4,5 @@
     name:
       - 'kubectl'
       - 'kubectx'
+      - 'kustomize'
       - 'krew'

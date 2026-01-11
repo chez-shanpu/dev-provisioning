@@ -43,7 +43,8 @@
     name:
       - '1password'
       - 'alfred'
-      - "google-chrome"
+      - 'elgato-stream-deck'
+      - 'google-chrome'
       - 'dropbox'
       - 'gitify'
       - 'ghostty'
